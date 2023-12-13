@@ -13,6 +13,7 @@ I'm an economic/data analyst at the Department of Education (Australian Governme
 -   Data Analysis
 -   Data Visualisation
 -   Public Health Data
+-   Environmental Data
 
 ##### Extra-Curricalar
 
@@ -24,6 +25,6 @@ I'm an economic/data analyst at the Department of Education (Australian Governme
 -   [GitHub](https://github.com/johann-wagner)
 -   Email: [johann.wagner@gmail.com](mailto:johann.wagner@gmail.com)
 
-This website was built using [Quarto](https://quarto.org/).
+This website was built using [Quarto](https://quarto.org/). The source code can be found [here](https://github.com/johann-wagner/johann-wagner).
 
 💅💅💅
