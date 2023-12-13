@@ -4,6 +4,7 @@ title: "About"
 
 About this site
 
+Testing R code block
 ```{r}
 1 + 1
 ```

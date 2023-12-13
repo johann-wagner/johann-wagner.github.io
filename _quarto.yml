@@ -2,16 +2,25 @@ project:
   type: website
 
 website:
-  title: "johann-wagner"
+  title: "Johann Wagner"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - icon: linkedin
+        text: LinkedIn
+        href: https://www.linkedin.com/in/johannwagner/
+      - icon: github
+        text: GitHub
+        href: https://github.com/johann-wagner
+      - icon: envelope
+        text: Email
+        href: "mailto:johann.wagner@gmail.com"
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
     toc: true
 
