@@ -12,5 +12,26 @@
     "title": "Projects",
     "section": "",
     "text": "About this site\nTesting R code block\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Blog Sub-Page\nTesting R code block\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Projects Sub-Page\nTesting R code block\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "cv/index.html",
+    "href": "cv/index.html",
+    "title": "CV",
+    "section": "",
+    "text": "CV Sub-Page\nTesting R code block\n\n1 + 1\n\n[1] 2"
   }
 ]

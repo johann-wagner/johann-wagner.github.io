@@ -1,12 +1,4 @@
 # This file controls the settings for my Quarto website.
-project:
-  type: website
-  output-dir: docs
-  preview:
-    port: 22222
-    browser: true
-    watch-inputs: true
-    navigate: true
 
 # Website Settings
 website:
@@ -45,6 +37,15 @@ website:
       <span class="faux-block">&#169; 2023 Johann Wagner CC BY-SA 4.0</span>
     right: |
       <span class="faux-block"><a href="https://github.com/johann-wagner/johann-wagner">View source code on my GitHub</a></span>
+
+project:
+  type: website
+  output-dir: docs
+  preview:
+    port: 22222
+    browser: true
+    watch-inputs: true
+    navigate: true
 
 execute:
   freeze: true

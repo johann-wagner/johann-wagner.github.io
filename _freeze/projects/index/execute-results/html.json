@@ -1,0 +1,14 @@
+{
+  "hash": "bad2433c33d1f046436ca943fbb3b331",
+  "result": {
+    "markdown": "---\ntitle: \"Projects\"\ntoc: true\ntoc-title: Contents\ntoc-location: left\n---\n\n\nProjects Sub-Page\n\nTesting R code block\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
