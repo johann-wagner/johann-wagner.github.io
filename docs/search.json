@@ -2,8 +2,15 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Johann Wagner",
+    "title": "Welcome!",
     "section": "",
-    "text": "Hi, I’m Johann! 🖐\n\nNice to meet you! 😊\nI’m an economic/data analyst at the Department of Education (Australian Government). I completed my Bachelor of Economics minoring in Econometrics and Bachelor of Science majoring in Quantitative Environmental Modelling and minoring in Applied Statistics from the Australian National University in 2023.\n\nPassion\n\nData Analysis\nData Visualisation\nPublic Health Data\nEnvironmental Data\n\n\n\nExtra-Curricalar\n\nCo-Chair Data Analyst Network 2024\n\n\n\nYou can contact me via:\n\nLinkedIn\nGitHub\nEmail: johann.wagner@gmail.com\n\nThis website was built using Quarto. The source code can be found here.\n💅💅💅"
+    "text": "Welcome!\n\nHi, I’m Johann! 🖐\n\nNice to meet you! 😊\nI’m an economic/data analyst at the Department of Education (Australian Government). I completed my Bachelor of Economics minoring in Econometrics and Bachelor of Science majoring in Quantitative Environmental Modelling and minoring in Applied Statistics from the Australian National University in 2023.\n\nPassion\n\nData Analysis\nData Visualisation\nPublic Health Data\nEnvironmental Data\n\n\n\nExtra-Curricalar\n\nCo-Chair Data Analyst Network 2024\n\n\n\nYou can contact me via:\n\nLinkedIn\nGitHub\nEmail: johann.wagner@gmail.com\n\nThis website was built using Quarto. The source code can be found here.\n💅💅💅"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "About this site\nTesting R code block\n\n1 + 1\n\n[1] 2"
   }
 ]

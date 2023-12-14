@@ -1,29 +1,61 @@
+# This file controls the settings for my Quarto website.
 project:
   type: website
   output-dir: docs
+  preview:
+    port: 22222
+    browser: true
+    watch-inputs: true
+    navigate: true
 
+# Website Settings
 website:
   title: "Johann Wagner"
+
   navbar:
+    pinned: true
+
+    # Sub-pages
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: Projects
+
+    # Social Media Links
+    right:
       - icon: linkedin
-        text: LinkedIn
         href: https://www.linkedin.com/in/johannwagner/
       - icon: github
-        text: GitHub
         href: https://github.com/johann-wagner
       - icon: envelope
-        text: Email
         href: "mailto:johann.wagner@gmail.com"
 
+  search:
+    location: navbar
+    type: textbox
+  page-footer:
+    left: |
+      <span class="faux-block">&#169; 2023 Johann Wagner CC BY-SA 4.0</span>
+    center: |
+      <span class="faux-block"><a href="https://www.marvinschmitt.com/blog/website-tutorial-quarto/">View the tutorial for this template!</a></span>
+    right: |
+      <span class="faux-block"><a href="https://github.com/johann-wagner/johann-wagner">View source code on my GitHub</a></span>
+
+execute:
+  freeze: true
+
+# Theme Settings
 format:
   html:
     theme: flatly
     css: styles.css
     toc: true
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
 
 
 

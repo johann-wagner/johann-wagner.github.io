@@ -1,6 +1,4 @@
----
-title: "Johann Wagner"
----
+# Welcome!
 
 ### Hi, I'm Johann! 🖐
 
