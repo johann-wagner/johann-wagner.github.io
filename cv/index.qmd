@@ -1,8 +1,8 @@
 ---
-title: "Projects"
+title: "CV"
 ---
 
-About this site
+CV Sub-Page
 
 Testing R code block
 ```{r}

@@ -4,7 +4,7 @@
 
 #### Nice to meet you! 😊
 
-I'm an economic/data analyst at the Department of Education (Australian Government). I completed my Bachelor of Economics minoring in [Econometrics](https://programsandcourses.anu.edu.au/2023/minor/emet-min) and Bachelor of Science majoring in [Quantitative Environmental Modelling](https://programsandcourses.anu.edu.au/2023/major/quem-maj) and minoring in [Applied Statistics](https://programsandcourses.anu.edu.au/2023/minor/apst-min) from the Australian National University in 2023.
+I'm an economic/data analyst at the Department of Education (Australian Government). I completed my Bachelor of Economics minoring in [Econometrics](https://programsandcourses.anu.edu.au/2023/minor/emet-min) and Bachelor of Science majoring in [Quantitative Environmental Modelling](https://programsandcourses.anu.edu.au/2023/major/quem-maj) and minoring in [Applied Statistics](https://programsandcourses.anu.edu.au/2023/minor/apst-min) from the Australian National University in 2023. You can access my CV [here](../cv/index.qmd).
 
 ##### Passion
 
@@ -23,6 +23,6 @@ I'm an economic/data analyst at the Department of Education (Australian Governme
 -   [GitHub](https://github.com/johann-wagner)
 -   Email: [johann.wagner@gmail.com](mailto:johann.wagner@gmail.com)
 
-This website was built using [Quarto](https://quarto.org/). The source code can be found [here](https://github.com/johann-wagner/johann-wagner).
+This website was built using [Quarto](https://quarto.org/). The source code can be found [here](https://github.com/johann-wagner/johann-wagner). I'd like to thank [Marvin Schmitt](https://www.marvinschmitt.com/blog/website-tutorial-quarto/) and [Melissa Van Bussell](https://youtu.be/nuYNCPRf8Js?si=mL9L7ic3PdJcs5C7) for their tutorials on how to build a website using Quarto.
 
 💅💅💅

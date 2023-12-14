@@ -17,10 +17,12 @@ website:
 
     # Sub-pages
     left:
-      - href: index.qmd
-        text: Home
-      - href: about.qmd
+      - href: projects/index.qmd
         text: Projects
+      - href: blog/index.qmd
+        text: Blog
+      - href: cv/index.qmd
+        text: CV
 
     # Social Media Links
     right:

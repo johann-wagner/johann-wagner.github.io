@@ -1,0 +1,13 @@
+---
+title: "Blog"
+toc: true
+toc-title: Contents
+toc-location: left
+---
+
+Blog Sub-Page
+
+Testing R code block
+```{r}
+1 + 1
+```
