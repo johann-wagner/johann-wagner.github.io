@@ -1,5 +1,8 @@
 ---
 title: "CV"
+toc: true
+toc-title: Contents
+toc-location: left
 ---
 
 CV Sub-Page
