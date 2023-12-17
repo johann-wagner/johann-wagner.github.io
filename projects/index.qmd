@@ -7,7 +7,4 @@ toc-location: left
 
 Projects Sub-Page
 
-Testing R code block
-```{r}
-1 + 1
-```
+**Work in Progress**
