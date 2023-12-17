@@ -5,6 +5,59 @@ toc-title: Contents
 toc-location: left
 ---
 
-Projects Sub-Page
+Here are some of my past and current projects:
 
-**Work in Progress**
+# Current Projects
+## Spotify Data Analysis
+#### Purpose:
+Analyse my Spotify listening history to gain insights into my music taste and listening habits.
+
+#### Project Status:
+This project is currently in progress. The data cleaning is still in progress and then further visualisations and tools will be created once data has been cleaned and tidied.
+
+#### Links:
+-   [GitHub Repository](https://github.com/johann-wagner/spotify-analysis)
+
+
+
+# Past Projects
+### Invasive Species RShiny Dashboard
+
+#### Purpose:
+Develop an RShiny Dashboard showcasing the spatial and temporal (monthly) occurence of seven invasive animal species in Australia by state/territory.
+
+#### Project Status:
+This project is complete. The dashboard is currently hosted on [shinyapps.io](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/). The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.
+
+#### Project Scope:
+This project was the final assignment for the [Data Science for Biologists (DS4B)](https://programsandcourses.anu.edu.au/2023/course/biol3207) university course.
+
+The project had the following brief:
+Your task is to:
+
+-  choose a dataset or combination of datasets
+-  develop some questions/aims related to that dataset, including appropriate background research
+-  use R to address those questions/aims
+-  write your findings into a report of up to 2000 words and 10 figures
+-  summarise your findings in a poster which you will present in the week 12 workshop
+
+Ideally, you should choose a combination of dataset and questions/aims that are interesting to you, because the more interesting you find it, the better your work will be!
+
+#### Links:
+-   [RShiny Dashboard](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/)
+
+-   [Poster](https://github.com/johann-wagner/DS4B-final-project/blob/main/u6958957_poster.pdf)
+
+-   [GitHub Repository](https://github.com/johann-wagner/DS4B-final-project)
+
+
+
+## Leadership Compass
+#### Purpose:
+Create an R script that creates a visualisation of the results from the leadership compass survey.
+
+#### Project Status:
+This project is currently in progress. There are still major improvements to be made to the visualisation and the data workflow. An excel file containing the survey results is currently being used as the data source. The next step is to create a Google Form to collect the survey results and then use the Google Form API to pull the data into the R script. Potentially, this can further be all incoroprated into an RShiny App.
+
+#### Links:
+-   [GitHub Repository](https://github.com/johann-wagner/leadership_compass)
