@@ -5,6 +5,4 @@ toc-title: Contents
 toc-location: left
 ---
 
-CV Sub-Page
-
-**Work in Progress**
+Download my CV [here](cv/Johann_Wagner_CV_2023.pdf).
