@@ -5,4 +5,4 @@ toc-title: Contents
 toc-location: left
 ---
 
-Download my CV [here](cv/Johann_Wagner_CV_2023.pdf).
+Download [Johann's CV](../cv/Johann_Wagner_CV_2023.pdf).
