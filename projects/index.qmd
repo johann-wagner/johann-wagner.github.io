@@ -11,7 +11,7 @@ Here are some of my past and current projects:
 
 ## Spotify Data Analysis
 
-#### Purpose: = = = = = = |> |> |> |> |> |> |> |> |> 
+#### Purpose:
 This project is complete. The dashboard is currently hosted on [shinyapps.io](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/). The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.
 
 #### Project Scope:
@@ -35,6 +35,20 @@ Ideally, you should choose a combination of dataset and questions/aims that are 
 -   [Poster](https://github.com/johann-wagner/DS4B-final-project/blob/main/u6958957_poster.pdf)
 
 -   [GitHub Repository](https://github.com/johann-wagner/DS4B-final-project)
+
+## D20 Simulation
+
+#### Purpose:
+
+Calculating the probability mass function of a d20 twenty times and adding a rule of rolling another 6 times if a 20 is rolled.
+
+#### Project Status:
+-   Create an RShiny Dashboard
+-   Rewrite the code to incorporate `rbinom()`, instead of using `runif()`.
+
+#### Links:
+
+-   [GitHub Repository](https://github.com/johann-wagner/d20-simulation)
 
 ## Leadership Compass
 

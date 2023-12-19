@@ -46,7 +46,7 @@
     "href": "projects/index.html#spotify-data-analysis",
     "title": "Projects",
     "section": "Spotify Data Analysis",
-    "text": "Spotify Data Analysis\n\nPurpose:\nAnalyse my Spotify listening history to gain insights into my music taste and listening habits.\n\n\nProject Status:\nThis project is currently in progress. The data cleaning is still in progress and then further visualisations and tools will be created once data has been cleaned and tidied.\n\n\nLinks:\n\nGitHub Repository"
+    "text": "Spotify Data Analysis\n\nPurpose:\nThis project is complete. The dashboard is currently hosted on shinyapps.io. The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.\n\n\nProject Scope:\nThis project was the final assignment for the Data Science for Biologists (DS4B) university course.\nThe project had the following brief: Your task is to:\n\nchoose a dataset or combination of datasets\ndevelop some questions/aims related to that dataset, including appropriate background research\nuse R t |&gt; o address those questions/aims\nwrite your findings into a report of up to 2000 words and 10 figures\nsummarise your findings in a poster which you will present in the week 12 workshop\n\nIdeally, you should choose a combination of dataset and questions/aims that are interesting to you, because the more interesting you find it, the better your work will be!\n\n\nLinks:\n\nRShiny Dashboard\nPoster\nGitHub Repository"
   },
   {
     "objectID": "projects/index.html#leadership-compass",
@@ -54,5 +54,12 @@
     "title": "Projects",
     "section": "Leadership Compass",
     "text": "Leadership Compass\n\nPurpose:\nCreate an R script that creates a visualisation of the results from the leadership compass survey.\n\n\nProject Status:\nThis project is currently in progress. There are still major improvements to be made to the visualisation and the data workflow. An excel file containing the survey results is currently being used as the data source. The next step is to create a Google Form to collect the survey results and then use the Google Form API to pull the data into the R script. Potentially, this can further be all incoroprated into an RShiny App.\n\n\nLinks:\n\nGitHub Repository"
+  },
+  {
+    "objectID": "projects/index.html#d20-simulation",
+    "href": "projects/index.html#d20-simulation",
+    "title": "Projects",
+    "section": "D20 Simulation",
+    "text": "D20 Simulation\n\nPurpose:\nCalculating the probability mass function of a d20 twenty times and adding a rule of rolling another 6 times if a 20 is rolled.\n\n\nProject Status:\n\nCreate an RShiny Dashboard\nRewrite the code to incorporate rbinom(), instead of using runif().\n\n\n\nLinks:\n\nGitHub Repository"
   }
 ]
