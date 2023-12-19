@@ -11,30 +11,7 @@ Here are some of my past and current projects:
 
 ## Spotify Data Analysis
 
-#### Purpose:
-
-Analyse my Spotify listening history to gain insights into my music taste and listening habits.
-
-#### Project Status:
-
-This project is currently in progress. The data cleaning is still in progress and then further visualisations and tools will be created once data has been cleaned and tidied.
-
-#### Links:
-
--   [GitHub Repository](https://github.com/johann-wagner/spotify-analysis)
-
-\
-
-# Past Projects
-
-## Invasive Species RShiny Dashboard
-
-#### Purpose:
-
-Develop an RShiny Dashboard showcasing the spatial and temporal (monthly) occurence of seven invasive animal species in Australia by state/territory.
-
-#### Project Status:
-
+#### Purpose: = = = = = = |> |> |> |> |> |> |> |> |> 
 This project is complete. The dashboard is currently hosted on [shinyapps.io](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/). The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.
 
 #### Project Scope:
@@ -45,7 +22,7 @@ The project had the following brief: Your task is to:
 
 -   choose a dataset or combination of datasets
 -   develop some questions/aims related to that dataset, including appropriate background research
--   use R to address those questions/aims
+-   use R t |> o address those questions/aims
 -   write your findings into a report of up to 2000 words and 10 figures
 -   summarise your findings in a poster which you will present in the week 12 workshop
 

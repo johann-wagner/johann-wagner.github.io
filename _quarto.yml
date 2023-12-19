@@ -34,7 +34,7 @@ website:
     type: textbox
   page-footer:
     left: |
-      <span class="faux-block">&#169; 2023 Johann Wagner CC BY-SA 4.0</span>
+      <span class="faux-block">&#169; 2023 Johann Wagner CC0-1.0 License</span>
     right: |
       <span class="faux-block"><a href="https://github.com/johann-wagner/johann-wagner">View source code on my GitHub</a></span>
 
