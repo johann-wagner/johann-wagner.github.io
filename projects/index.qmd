@@ -9,7 +9,7 @@ Here are some of my past and current projects:
 
 # Active Projects
 
-## Spotify Data Analysis
+## Invasive Species RShiny Dashboard
 
 #### Purpose:
 This project is complete. The dashboard is currently hosted on [shinyapps.io](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/). The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.
@@ -35,6 +35,24 @@ Ideally, you should choose a combination of dataset and questions/aims that are 
 -   [Poster](https://github.com/johann-wagner/DS4B-final-project/blob/main/u6958957_poster.pdf)
 
 -   [GitHub Repository](https://github.com/johann-wagner/DS4B-final-project)
+
+## Spotify Exploratory Data Analysis
+
+#### Purpose:
+Explore Johann's personal Spotify data and discover patterns in his listening habits.
+
+#### Project Status:
+-   Currently working on looking at the streaming history data.
+-   Next step is to look at the playlist data and await the entire streaming history data to be available (late Jan 2024).
+-   The final step is to create an RShiny dashboard to visualise the data and create some basic descriptive statistics.
+-   Ideally, this RShiny will allow individuals to upload their own personal Spotify data and explore their own listening habits.
+-   Additionally, I would like to recreate my own version of the Spotify Wrapped.
+-   Need to explore the Spotify API and see how I can integrate it into the RShiny dashboard.
+-   Look into other people's Spotify and R projects to see what I can learn from them.
+
+#### Links:
+-   [GitHub Repository](https://github.com/johann-wagner/spotify-analysis).
+-   [Spotify API](https://developer.spotify.com/documentation/web-api/).
 
 ## D20 Simulation
 
