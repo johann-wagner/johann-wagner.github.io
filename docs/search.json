@@ -39,7 +39,7 @@
     "href": "projects/index.html#invasive-species-rshiny-dashboard",
     "title": "Projects",
     "section": "Invasive Species RShiny Dashboard",
-    "text": "Invasive Species RShiny Dashboard\n\nPurpose:\nDevelop an RShiny Dashboard showcasing the spatial and temporal (monthly) occurence of seven invasive animal species in Australia by state/territory.\n\n\nProject Status:\nThis project is complete. The dashboard is currently hosted on shinyapps.io. The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.\n\n\nProject Scope:\nThis project was the final assignment for the Data Science for Biologists (DS4B) university course.\nThe project had the following brief: Your task is to:\n\nchoose a dataset or combination of datasets\ndevelop some questions/aims related to that dataset, including appropriate background research\nuse R to address those questions/aims\nwrite your findings into a report of up to 2000 words and 10 figures\nsummarise your findings in a poster which you will present in the week 12 workshop\n\nIdeally, you should choose a combination of dataset and questions/aims that are interesting to you, because the more interesting you find it, the better your work will be!\n\n\nLinks:\n\nRShiny Dashboard\nPoster\nGitHub Repository"
+    "text": "Invasive Species RShiny Dashboard\n\nPurpose:\nThis project is complete. The dashboard is currently hosted on shinyapps.io. The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.\n\n\nProject Scope:\nThis project was the final assignment for the Data Science for Biologists (DS4B) university course.\nThe project had the following brief: Your task is to:\n\nchoose a dataset or combination of datasets\ndevelop some questions/aims related to that dataset, including appropriate background research\nuse R t |&gt; o address those questions/aims\nwrite your findings into a report of up to 2000 words and 10 figures\nsummarise your findings in a poster which you will present in the week 12 workshop\n\nIdeally, you should choose a combination of dataset and questions/aims that are interesting to you, because the more interesting you find it, the better your work will be!\n\n\nLinks:\n\nRShiny Dashboard\nPoster\nGitHub Repository"
   },
   {
     "objectID": "projects/index.html#spotify-data-analysis",
@@ -61,5 +61,12 @@
     "title": "Projects",
     "section": "D20 Simulation",
     "text": "D20 Simulation\n\nPurpose:\nCalculating the probability mass function of a d20 twenty times and adding a rule of rolling another 6 times if a 20 is rolled.\n\n\nProject Status:\n\nCreate an RShiny Dashboard\nRewrite the code to incorporate rbinom(), instead of using runif().\n\n\n\nLinks:\n\nGitHub Repository"
+  },
+  {
+    "objectID": "projects/index.html#spotify-exploratory-data-analysis",
+    "href": "projects/index.html#spotify-exploratory-data-analysis",
+    "title": "Projects",
+    "section": "Spotify Exploratory Data Analysis",
+    "text": "Spotify Exploratory Data Analysis\n\nPurpose:\nExplore Johann’s personal Spotify data and discover patterns in his listening habits.\n\n\nProject Status:\n\nCurrently working on looking at the streaming history data.\nNext step is to look at the playlist data and await the entire streaming history data to be available (late Jan 2024).\nThe final step is to create an RShiny dashboard to visualise the data and create some basic descriptive statistics.\nIdeally, this RShiny will allow individuals to upload their own personal Spotify data and explore their own listening habits.\nAdditionally, I would like to recreate my own version of the Spotify Wrapped.\nNeed to explore the Spotify API and see how I can integrate it into the RShiny dashboard.\nLook into other people’s Spotify and R projects to see what I can learn from them.\n\n\n\nLinks:\n\nGitHub Repository.\nSpotify API."
   }
 ]
