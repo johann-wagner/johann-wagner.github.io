@@ -1,0 +1,16 @@
+---
+title: "Posts"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+
+Welcome to Johann's posts sub-page.
+
+I write a variety of content from personal data analysis projects to tutorials on how to use various tools and general personal blog posts as well. I hope you find something useful here! :)
