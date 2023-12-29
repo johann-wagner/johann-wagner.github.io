@@ -3,6 +3,7 @@ title: "Projects"
 toc: true
 toc-title: Contents
 toc-location: left
+title-block-banner: true
 ---
 
 Here are some of my past and current projects:

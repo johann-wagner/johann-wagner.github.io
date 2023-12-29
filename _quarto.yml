@@ -3,7 +3,6 @@
 # Website Settings
 website:
   title: "Johann Wagner"
-  description: "Core Values: Balance, Love, Community"
 
   navbar:
     pinned: true
@@ -14,7 +13,7 @@ website:
         href: projects/index.qmd
 
       - text: "Posts"
-        href: posts/index.qmd
+        href: posts_sub_page/index.qmd
 
       - text: "CV"
         href: cv/index.qmd
@@ -46,9 +45,6 @@ project:
     browser: true
     watch-inputs: true
     navigate: true
-
-execute:
-  freeze: true
 
 # Theme Settings
 format:

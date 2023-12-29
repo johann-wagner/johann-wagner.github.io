@@ -5,5 +5,11 @@
       "/posts/posts/spotify_exploratory_data_analysis/index.html",
       "/posts/posts/spotify_exploratory_data_analysis/index.html"
     ]
+  },
+  {
+    "listing": "/posts_sub_page/index.html",
+    "items": [
+      "/posts_sub_page/posts/spotify_exploratory_data_analysis/index.html"
+    ]
   }
 ]

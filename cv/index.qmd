@@ -7,6 +7,7 @@ resources:
   - "cv.pdf"
 cv:
   pdf: "cv.pdf"
+title-block-banner: true
 ---
 
 ```{=html}
