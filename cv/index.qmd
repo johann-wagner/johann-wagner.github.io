@@ -1,8 +1,23 @@
 ---
+layout: page
 title: "CV"
-toc: true
-toc-title: Contents
-toc-location: left
+excerpt: My current CV
+engine: knitr 
+resources:
+  - "cv.pdf"
+cv:
+  pdf: "cv.pdf"
 ---
+
+```{=html}
+<p class="text-center">
+  <a class="btn btn-primary btn-lg cv-download" href="`r rmarkdown::metadata$cv$pdf`" target="_blank">
+    <i class="fa-solid fa-file-arrow-down"></i>&ensp;Download current CV
+  </a>
+</p>
+<div class="embed-container">
+  <iframe src="`r rmarkdown::metadata$cv$pdf`#toolbar=0" style="border: 0.5px;width: 100%;"></iframe>
+</div>
+```
 
 Download [Johann's CV](../cv/Johann_Wagner_CV_2023.pdf).
