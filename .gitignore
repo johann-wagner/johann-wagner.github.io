@@ -41,3 +41,6 @@ vignettes/*.pdf
 .Renviron
 
 /.quarto/
+
+# Data
+/raw_data
