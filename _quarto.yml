@@ -13,8 +13,8 @@ website:
       - text: "Projects"
         href: projects/index.qmd
 
-      - text: "Blog"
-        href: blog/index.qmd
+      - text: "Posts"
+        href: posts/index.qmd
 
       - text: "CV"
         href: cv/index.qmd
