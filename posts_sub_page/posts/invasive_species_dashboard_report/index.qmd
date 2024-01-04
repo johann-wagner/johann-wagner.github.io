@@ -22,7 +22,7 @@ fig-height: 4
 
 This is a university assignment for the course [Data Science for Biology](https://programsandcourses.anu.edu.au/2022/course/BIOL3207) at the Australian National University (ANU). The purpose of the assignment was to formulate a research question, use R and a relevant dataset to address the question and communicate the analysis into a report and a poster.
 
-I developed an [RShiny Dashboard](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/) visualising seven different invasive species by state/territory using ALA data through the `galah` package with a focus on spatial and temporal visualisations. The dashboard also allows users to download the cleaned dataset for the selected invasive animal species for a particular state/territory.
+I developed an [RShiny Dashboard](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/) visualising seven different invasive species by state/territory using ALA data through the [`galah` package](https://github.com/AtlasOfLivingAustralia/galah-R) with a focus on spatial and temporal visualisations. The dashboard also allows users to download the cleaned dataset for the selected invasive animal species for a particular state/territory.
 
 The Dashboard is available [here](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/).
 
