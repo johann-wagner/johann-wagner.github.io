@@ -9,7 +9,10 @@
   {
     "listing": "/posts_sub_page/index.html",
     "items": [
-      "/posts_sub_page/posts/spotify_exploratory_data_analysis/index.html"
+      "/posts_sub_page/posts/invasive_species_dashboard_report/index.html",
+      "/posts_sub_page/posts/spotify_exploratory_data_analysis_streaming_history_data/index.html",
+      "/posts_sub_page/posts/invasive_species_dashboard_report/final_project.html",
+      "/posts_sub_page/posts/invasive_species_dashboard_report/processed_data/data_cleaning.html"
     ]
   }
 ]

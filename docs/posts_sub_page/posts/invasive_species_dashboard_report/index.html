@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Johann Wagner">
+<meta name="dcterms.date" content="2024-01-04">
+<meta name="description" content="Developing an RShiny dashboard to visualise invasive animal species in Australia">
+<title>Johann Wagner - Invasive Animal Species Dashboard</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="../../../styles.css">
+</head>
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Johann Wagner</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../../../projects/index.html" rel="" target="">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../posts_sub_page/index.html" rel="" target="">
+ <span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../cv/index.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/johannwagner/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/johann-wagner" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:johann.wagner@gmail.com" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#wordfigure-count" id="toc-wordfigure-count" class="nav-link active" data-scroll-target="#wordfigure-count">Word/figure count</a></li>
+  <li><a href="#location-on-github" id="toc-location-on-github" class="nav-link" data-scroll-target="#location-on-github">Location on GitHub</a></li>
+  <li><a href="#dashboard-link" id="toc-dashboard-link" class="nav-link" data-scroll-target="#dashboard-link">Dashboard Link</a></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description">Data Description</a></li>
+  <li>
+<a href="#questionsaims" id="toc-questionsaims" class="nav-link" data-scroll-target="#questionsaims">Questions/Aims</a>
+  <ul>
+<li><a href="#initial-aims" id="toc-initial-aims" class="nav-link" data-scroll-target="#initial-aims">Initial Aims:</a></li>
+  <li><a href="#justifications" id="toc-justifications" class="nav-link" data-scroll-target="#justifications">Justifications:</a></li>
+  </ul>
+</li>
+  <li><a href="#raw-data" id="toc-raw-data" class="nav-link" data-scroll-target="#raw-data">Raw data</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data wrangling</a></li>
+  <li><a href="#sanity-checks" id="toc-sanity-checks" class="nav-link" data-scroll-target="#sanity-checks">Sanity checks</a></li>
+  <li>
+<a href="#addressing-the-questionsaims" id="toc-addressing-the-questionsaims" class="nav-link" data-scroll-target="#addressing-the-questionsaims">Addressing the questions/aims</a>
+  <ul>
+<li>
+<a href="#aim-1-dashboard-and-visualisations" id="toc-aim-1-dashboard-and-visualisations" class="nav-link" data-scroll-target="#aim-1-dashboard-and-visualisations">Aim 1: Dashboard and Visualisations</a>
+  <ul class="collapse">
+<li><a href="#folder-system" id="toc-folder-system" class="nav-link" data-scroll-target="#folder-system">Folder System</a></li>
+  <li><a href="#the-rshiny-app" id="toc-the-rshiny-app" class="nav-link" data-scroll-target="#the-rshiny-app">The RShiny App</a></li>
+  <li><a href="#spatial-visualisation-european-rabbits-in-act" id="toc-spatial-visualisation-european-rabbits-in-act" class="nav-link" data-scroll-target="#spatial-visualisation-european-rabbits-in-act">Spatial Visualisation: European Rabbits in ACT</a></li>
+  <li><a href="#temporal-visualisation" id="toc-temporal-visualisation" class="nav-link" data-scroll-target="#temporal-visualisation">Temporal Visualisation</a></li>
+  </ul>
+</li>
+  <li><a href="#aim-2-regionality" id="toc-aim-2-regionality" class="nav-link" data-scroll-target="#aim-2-regionality">Aim 2: Regionality</a></li>
+  <li><a href="#aim-3-data-download" id="toc-aim-3-data-download" class="nav-link" data-scroll-target="#aim-3-data-download">Aim 3: Data Download</a></li>
+  <li><a href="#github-use-final-rshiny-app" id="toc-github-use-final-rshiny-app" class="nav-link" data-scroll-target="#github-use-final-rshiny-app">GitHub Use / Final RShiny App</a></li>
+  </ul>
+</li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Invasive Animal Species Dashboard</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Data Projects</div>
+    <div class="quarto-category">Exploratory Data Analysis</div>
+    <div class="quarto-category">Spotify</div>
+    <div class="quarto-category">University Assignment</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Developing an RShiny dashboard to visualise invasive animal species in Australia
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Johann Wagner </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 4, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header><section id="wordfigure-count" class="level1"><h1>Word/figure count</h1>
+<p>Words: 1999 words</p>
+<p>Figures: 3</p>
+</section><section id="location-on-github" class="level1"><h1>Location on GitHub</h1>
+<p>The root directory on GitHub: <a href="https://github.com/johann-wagner/DS4B-final-project/tree/main">DS4B-final-project</a>.</p>
+</section><section id="dashboard-link" class="level1"><h1>Dashboard Link</h1>
+<p><a href="https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/">Dashboard Link</a></p>
+</section><section id="data-description" class="level1"><h1>Data Description</h1>
+<p>The data used is from The Atlas of Living Australia (ALA), which is “a collaborative, digital and open infrastructure repository that aggregates biodiversity data from multiple sources” (<a href="https://support.ala.org.au/support/solutions/articles/6000261410-introduction-to-the-ala">ALA, 2022</a>).</p>
+<p>Specifically, this analysis uses species occurrence records for seven invasive animal species:</p>
+<ol type="1">
+<li><p><a href="https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/692effa3-b719-495f-a86f-ce89e2981652">European Rabbits (Oryctolagus cuniculus)</a></p></li>
+<li><p><a href="https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/2869ce8a-8212-46c2-8327-dfb7fabb8296">European Red Foxes (Vulpes vulpes)</a></p></li>
+<li><p><a href="https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/e79179f8-44bf-46eb-b139-a2e66f6045c1">Cane Toads (Rhinella marina)</a></p></li>
+<li><p><a href="https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/7de6b16a-f854-4b4b-88cf-81868ce74ad8">Feral Cats (Felis catus)</a></p></li>
+<li><p><a href="https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/86b4395d-97a7-470d-b35b-306e01dfbab6">Feral Horses (Equus (Equus) caballus)</a></p></li>
+<li><p><a href="https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/948d8ca1-62fc-4d03-a79d-4be2de837264">Feral Pigs (Sus scrofa)</a></p></li>
+<li><p><a href="https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/5b3fe1c6-1c2c-4e20-819f-2e6d8fa3d332">Red Imported Fire Ants (Solenopsis invicta)</a></p></li>
+</ol>
+<p>I was interested in the spatial and temporal variables for all 7 species, particularly the longitude and latitude values (<code>decimalLongitude</code> and <code>decimalLatitude</code>) and date of recording (<code>eventDate</code>) for each record.</p>
+</section><section id="questionsaims" class="level1"><h1>Questions/Aims</h1>
+<section id="initial-aims" class="level2"><h2 class="anchored" data-anchor-id="initial-aims">Initial Aims:</h2>
+<ol type="1">
+<li><p>Develop an RShiny app that showcases the spatial and temporal (monthly) occurrence of <del>the top 5-10</del> 7 invasive animal species in Australia by state/territory <del>and by regionality (urban vs.&nbsp;regional)</del></p></li>
+<li><p><del>Visualise and calculate the proportion of the selected invasive animal species observed in an urban area</del></p></li>
+<li><p>Create a download option for users to download the cleaned dataset for the selected invasive animal species for a particular state/territory</p></li>
+</ol></section><section id="justifications" class="level2"><h2 class="anchored" data-anchor-id="justifications">Justifications:</h2>
+<p>Initially, I was interested in the spatial distribution of magpies in Canberra as I’m an avid cyclist and wanted to find the hotspots of magpie records and linking/statistically model this data with a collaborative magpie swooping database called <a href="https://www.magpiealert.com/">magpiealert.com</a>. Unfortunately, the data was not available and the sampling bias of the occurrence data may not be truly representative, as observations are more likely to be near roads, airports, and major urban areas (<a href="https://labs.ala.org.au/posts/2022-07-22_sample-bias/post.html?panelset=mantids">Kellie, 2022</a>).</p>
+<p>This made me interested in simply visualising the data spatially, instead of using any statistical methodologies and focusing the project on whether there would be major differences/patterns of occurrence records in urban vs.&nbsp;non-urban/regional areas. Unfortunately, given the scope of the project, calculating the urban vs.&nbsp;non-urban analysis would have been too much scope-creep, so this aim was ignored (maybe post-project exploration).</p>
+<p>Hughes et al.&nbsp;(<a href="https://onlinelibrary.wiley.com/doi/10.1111/ecog.05926">2021</a>) and Guerin et al.&nbsp;(<a href="https://doi.org/10.1371/journal.pone.0144779">2016</a>) highlight the spatial sampling bias associated with biodiversity data suggesting that these biases must first be understood before applying any statistical modelling methods. Interestingly, Australian research by Piccolo et al.&nbsp;(<a href="https://www.nature.com/articles/s41598-020-66719-x">2020</a>) show that reptile research locations are highly positively correlated with proximity to universities suggesting biodiversity research locations are closely associated by accessibility. Similarly, temporal biases can also influence results, as species distributions can change across time (<a href="https://doi.org/10.1371/journal.pbio.1000385">Boakes et al, 2010</a>).</p>
+<p>The Atlas of Living Australia already have a browser-based spatial visualisation tool, where a specific species can be selected and plotted on a map. However, there seemed to not be a functionality to comparing both the spatial <em>and</em> temporal (by month) variables.</p>
+<p>This dashboard is the initial step in data exploration step and in the essence of open and citizen-science, I wanted to make my cleaned data easily available through the dashboard. Data sharing enables for further analysis and reusability (<a href="https://www.nature.com/articles/s41597-021-00981-0">Tedersoo et al., 2021</a>, <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020EA001562">Ramachandran et al., 2021</a>). I wanted my dashboard to follow the FAIR Data Principles (<a href="https://www.nature.com/articles/sdata201618">Wilkinson et al., 2016</a>).</p>
+<p>I chose invasive animal species, because of the rabbits I see when cycling in Canberra. The other 6 species were chosen arbitrarily based off this <a href="https://www.nespthreatenedspecies.edu.au/news-and-media/media-releases/australia-s-10-worst-invasive-species-study">article</a>, which summarises the results from Kearney et al.’s paper (<a href="https://www.nespthreatenedspecies.edu.au/media/qile4abf/kearney-et-al-2018_the-threats-to-aus-species_postprint.pdf">2018</a>).</p>
+<p>A deeper understanding of my thought process is documented in GitHub Issue <a href="https://github.com/johann-wagner/DS4B-final-project/issues/4"><code>#4</code></a>.</p>
+<p>The analysis was based on this <a href="https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html">ALALabs article</a> (<a href="https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html">Smith et al., 2023</a>).</p>
+</section></section><section id="raw-data" class="level1"><h1>Raw data</h1>
+<p>The raw data is available using the <code>galah</code> package. A user must use an ALA-registered email at <a href="ala.org.au">ala.org.au</a> and use the <code><a href="https://galah.ala.org.au/R/reference/galah_config.html">galah_config()</a></code> function. Once completed, the custom-function <code>load_galah_occurrence_data()</code> was used, where the input argument <code>species_name</code> was the aforementioned scientific names of the seven species.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">### Purpose:</span></span>
+<span><span class="co"># To load the occurrence data of any species within the Atlas</span></span>
+<span><span class="co"># of Living Australia.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://galah.ala.org.au/R/">galah</a></span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://galah.ala.org.au/R/reference/galah_config.html">galah_config</a></span><span class="op">(</span>email <span class="op">=</span> <span class="st">"johann.wagner@gmail.com"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">load_galah_occurrence_data</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
+<span>  <span class="co"># scientific name</span></span>
+<span>  <span class="va">species_name</span></span>
+<span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">species_occurrence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://galah.ala.org.au/R/reference/galah_call.html">galah_call</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    </span>
+<span>    <span class="co"># To conduct a search for species scientific name</span></span>
+<span>    <span class="fu"><a href="https://galah.ala.org.au/R/reference/galah_identify.html">galah_identify</a></span><span class="op">(</span><span class="va">species_name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    </span>
+<span>    <span class="co"># Pre-applied filter to ensure quality-assured data</span></span>
+<span>    <span class="co"># the "ALA" profile is designed to exclude lower quality records</span></span>
+<span>    <span class="fu"><a href="https://galah.ala.org.au/R/reference/galah_apply_profile.html">galah_apply_profile</a></span><span class="op">(</span><span class="va">ALA</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://galah.ala.org.au/R/reference/atlas_occurrences.html">atlas_occurrences</a></span><span class="op">(</span>mint_doi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">species_occurrence</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="co"># References:</span></span>
+<span><span class="co"># - [1] https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/692effa3-b719-495f-a86f-ce89e2981652</span></span>
+<span><span class="co"># - [2] https://galah.ala.org.au/R/reference/galah_apply_profile.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The DOIs for each species:</p>
+<ol type="1">
+<li><p><a href="https://doi.org/10.26197/ala.d0da2524-838a-4540-a160-fba8088f4850">European Rabbits (Oryctolagus cuniculus)</a></p></li>
+<li><p><a href="https://doi.org/10.26197/ala.5f700174-e92e-4376-a243-be05ffa93f46">European Red Foxes (Vulpes vulpes)</a></p></li>
+<li><p><a href="https://doi.org/10.26197/ala.d6d70c2c-00de-4f76-8ea6-598b9562eb64">Cane Toads (Rhinella marina)</a></p></li>
+<li><p><a href="https://doi.org/10.26197/ala.57a58cdc-88c0-45c1-9260-bd17c6fc4b62">Feral Cats (Felis catus)</a></p></li>
+<li><p><a href="https://doi.org/10.26197/ala.c3cebb21-c2e0-41d0-8b5d-f446c2914827">Feral Horses (Equus (Equus) caballus)</a></p></li>
+<li><p><a href="https://doi.org/10.26197/ala.952aa727-1915-4c3f-8399-ed940c24bfef">Feral Pigs (Sus scrofa)</a></p></li>
+<li><p><a href="https://doi.org/10.26197/ala.74b5dd29-4287-473d-8391-9184c8c62554">Red Imported Fire Ants (Solenopsis invicta)</a></p></li>
+</ol></section><section id="data-wrangling" class="level1"><h1>Data wrangling</h1>
+<p>Because the data is already in tidy format, the seven datasets are binded into one <code>tidied_data.csv</code>, then filtered with <code>excluded_data.csv</code>. The excluded data includes any <code>NA</code> values in the <code>eventDate</code>, <code>decimalLongitude</code>, and <code>decimalLatitude</code> columns and also includes data not located within any of the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files"><em>State and Territories - 2021</em></a> spatial boundaries provided by the Australian Bureau of Statistics (ABS). Further details of this process can be found in the <a href="https://github.com/johann-wagner/DS4B-final-project/tree/main/scripts">scripts folder</a> and <a href="https://github.com/johann-wagner/DS4B-final-project/blob/main/processed_data/data_cleaning.Rmd">data_cleaning.Rmd</a>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="va">excluded_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"processed_data/excluded_data.csv"</span><span class="op">)</span></span>
+<span><span class="va">tidied_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"processed_data/tidied_data.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cleaned_data</span> <span class="op">&lt;-</span> <span class="va">tidied_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span></span>
+<span>    <span class="va">excluded_data</span>,</span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a></span><span class="op">(</span><span class="va">recordID</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="sanity-checks" class="level1"><h1>Sanity checks</h1>
+<p>Let’s use <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> to do some sanity checks.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">cleaned_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">cleaned_data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">328342</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">POSIXct</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 14%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">scientificName</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">taxonConceptID</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">recordID</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">328342</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dataResourceName</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">occurrenceStatus</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 6%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">decimalLatitude</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-31.72</td>
+<td style="text-align: right;">6.54</td>
+<td style="text-align: right;">-43.49</td>
+<td style="text-align: right;">-35.83</td>
+<td style="text-align: right;">-33.80</td>
+<td style="text-align: right;">-29.96</td>
+<td style="text-align: right;">-10.14</td>
+<td style="text-align: left;">▂▇▂▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">decimalLongitude</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">145.01</td>
+<td style="text-align: right;">7.49</td>
+<td style="text-align: right;">112.94</td>
+<td style="text-align: right;">142.06</td>
+<td style="text-align: right;">147.39</td>
+<td style="text-align: right;">150.71</td>
+<td style="text-align: right;">159.08</td>
+<td style="text-align: left;">▁▁▃▇▆</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: POSIXct</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 11%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">min</th>
+<th style="text-align: left;">max</th>
+<th style="text-align: left;">median</th>
+<th style="text-align: right;">n_unique</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td style="text-align: left;">eventDate</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">1849-01-01</td>
+<td style="text-align: left;">2023-10-09</td>
+<td style="text-align: left;">2014-11-22</td>
+<td style="text-align: right;">29325</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<p>There are 328,342 records with the same number of unique values in the <code>recordID</code> column indicating each record is distinct. There are 8 unique <code>state</code> values and 7 <code>simpleName</code> values, which makes sense. The latest <code>eventDate</code> value is 2023-10-09, which is not in the future.</p>
+<p>Let’s spatially showcase the data.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span>  <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"wfmackey/absmapsdata"</span><span class="op">)</span></span>
+<span>  <span class="co"># To easily access the Australian Bureau of Statistics (ABS) spatial structures</span></span>
+<span>  <span class="co">### https://github.com/wfmackey/absmapsdata</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">absmapsdata</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="va">state2021</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="co"># Only state/territories</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">state_code_2021</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"9"</span>, <span class="st">"Z"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="va">geometry</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">cleaned_data</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">decimalLongitude</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">decimalLatitude</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>    size  <span class="op">=</span> <span class="fl">0.7</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Sanity Checked! All data points are in Australia!"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="720"></p>
+</div>
+</div>
+<p>Interestingly, it seems that there are a few observations that are to the east of the NSW border, which is likely an island part of NSW.</p>
+</section><section id="addressing-the-questionsaims" class="level1 page-columns page-full"><h1>Addressing the questions/aims</h1>
+<section id="aim-1-dashboard-and-visualisations" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="aim-1-dashboard-and-visualisations">Aim 1: Dashboard and Visualisations</h2>
+<section id="folder-system" class="level3"><h3 class="anchored" data-anchor-id="folder-system">Folder System</h3>
+<p>The RShiny app can be found in the GitHub folder <a href="https://github.com/johann-wagner/DS4B-final-project/tree/main/invasive_species_dashboard"><em>DS4B-final-project/invasive_species_dashboard</em></a>. Similar to R Project environments, the RShiny app is all self-contained in this folder. The individual R scripts in the <a href="https://github.com/johann-wagner/DS4B-final-project/tree/main/scripts"><em>DS4B-final-project/scripts</em></a> folder must be run first to produce and save the dashboard data within the RShiny folder for most recent data.</p>
+</section><section id="the-rshiny-app" class="level3"><h3 class="anchored" data-anchor-id="the-rshiny-app">The RShiny App</h3>
+<p>The RShiny folder contains four files:</p>
+<ul>
+<li><p><em>0-00_setup_and_configuration.R:</em> loads relevant packages and custom-made functions to create the analysis/visualisations/RShiny.</p></li>
+<li><p><em>dashboard_data.csv:</em> is the cleaned occurrence data for the seven invasive species, including spatial and temporal variables.</p></li>
+<li><p><em>server.R</em> contains the back-end logic/code that takes the two inputs to dynamically create/adjust the visualisations/titles/downloads.</p></li>
+<li><p><em>ui.R</em> contains the front-end user-interface design and layout of the app.</p></li>
+</ul></section><section id="spatial-visualisation-european-rabbits-in-act" class="level3"><h3 class="anchored" data-anchor-id="spatial-visualisation-european-rabbits-in-act">Spatial Visualisation: European Rabbits in ACT</h3>
+<p>Let’s create the spatial visualisation using European Rabbits and ACT as the inputs.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span>
+<span><span class="va">species_simple_name</span> <span class="op">&lt;-</span> <span class="st">"European Rabbits"</span></span>
+<span><span class="va">state_name</span> <span class="op">&lt;-</span> <span class="st">"Australian Capital Territory"</span></span>
+<span></span>
+<span></span>
+<span><span class="va">dashboard_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"processed_data/dashboard_data.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">spatial_data</span> <span class="op">&lt;-</span> <span class="va">dashboard_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
+<span>    <span class="va">simpleName</span> <span class="op">==</span> <span class="va">species_simple_name</span>,</span>
+<span>    <span class="va">state</span>      <span class="op">==</span> <span class="va">state_name</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="va">capital_cities_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<span>  <span class="op">~</span><span class="va">state</span>,                         <span class="op">~</span><span class="va">city</span>,       <span class="op">~</span><span class="va">lat</span>,     <span class="op">~</span><span class="va">lon</span>,</span>
+<span>  <span class="st">"Australian Capital Territory"</span>, <span class="st">"Canberra"</span>,  <span class="op">-</span><span class="fl">35.2809</span>, <span class="fl">149.1300</span>,</span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">state</span> <span class="op">==</span> <span class="va">state_name</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="va">state2021</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">state_name_2021</span> <span class="op">==</span> <span class="va">state_name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="va">geometry</span><span class="op">)</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"#E5E4E2"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">spatial_data</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">decimalLongitude</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">decimalLatitude</span>,</span>
+<span>      size <span class="op">=</span> <span class="va">simpleName</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>    colour <span class="op">=</span> <span class="st">"#1b9e77"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">capital_cities_data</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">lon</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">lat</span>,</span>
+<span>      shape <span class="op">=</span> <span class="va">city</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    colour <span class="op">=</span> <span class="st">"#d95f02"</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">4</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
+<span>  <span class="co"># Ref [1]</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span></span>
+<span>        <span class="st">"There are"</span> <span class="op">~</span></span>
+<span>            <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="op">{</span></span>
+<span>                <span class="va">spatial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                    <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                    <span class="fu"><a href="https://scales.r-lib.org/reference/comma.html">comma</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>            <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
+<span>            <span class="st">"records of"</span> <span class="op">~</span></span>
+<span>            <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="va">species_simple_name</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
+<span>            <span class="st">"in"</span> <span class="op">~</span></span>
+<span>            <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="va">state_name</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    shape <span class="op">=</span> <span class="st">"Capital City"</span>,</span>
+<span>    size <span class="op">=</span> <span class="st">"Invasive Species"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.ticks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span></span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">13</span><span class="op">)</span>,</span>
+<span></span>
+<span>    <span class="co"># Ref [2]: Improve readability</span></span>
+<span>    legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>    legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>      size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    legend.direction <span class="op">=</span> <span class="st">"vertical"</span>,</span>
+<span>    legend.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span></span>
+<span>      fill <span class="op">=</span> <span class="st">"#E5E4E2"</span>,</span>
+<span>      colour <span class="op">=</span> <span class="st">"#708090"</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span>,</span>
+<span>    legend.box.just <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    legend.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">6</span><span class="op">)</span>,</span>
+<span></span>
+<span>    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"transparent"</span>, colour <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="768"></p>
+</div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># References:</span></span>
+<span><span class="co"># 1: https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html</span></span>
+<span><span class="co"># 2: https://r-graph-gallery.com/239-custom-layout-legend-ggplot2.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Each green point represents one record. We can see that the majority of records are near Canberra with some patterns in Namadgi National Park, like Boboyan Road. Let’s visualise some more maps.</p>
+</section><section id="temporal-visualisation" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="temporal-visualisation">Temporal Visualisation</h3>
+<p>The aim of creating a circular monthly bar plot of record proportions was to explore potential temporal patterns. This plot suggests two things:</p>
+<ol type="1">
+<li><p>The time frequency when citizen scientists submit data and/or when professional/government teams measure/monitor invasive species. Maybe, annual monitoring occurs in May?</p></li>
+<li><p>The actual temporal species distribution. For example, maybe there are more cats in May in SA, because of reproduction behaviour?</p></li>
+</ol>
+<p>Let’s create it for Feral Cats in SA (a screenshot was used, due to word count limitations: please see GitHub repo for details)</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><img src="screenshots/temporal_feral_cats_south_australia.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption margin-caption">Temporal Feral Cats in SA</figcaption></figure>
+</div>
+</section></section><section id="aim-2-regionality" class="level2"><h2 class="anchored" data-anchor-id="aim-2-regionality">Aim 2: Regionality</h2>
+<p>This aim was completely abandoned, because of the scope of the project was getting too big. However, adding the capital city point highlights how majority of the selected species cluster around the capital city. Additionally, a zoom function was added to the Shiny app for users to zoom into specific patterns and areas of interest.</p>
+</section><section id="aim-3-data-download" class="level2"><h2 class="anchored" data-anchor-id="aim-3-data-download">Aim 3: Data Download</h2>
+<p>Ensuring the data followed FAIR principles included making the data findable, such as referencing the DOIs on the dashboard. The user can select the two inputs they are interested in and can download the respective csv. The option to download the entire dashboard dataset is also available.</p>
+</section><section id="github-use-final-rshiny-app" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="github-use-final-rshiny-app">GitHub Use / Final RShiny App</h2>
+<ul>
+<li>Final UI and visualisation design improvements were made using GitHub Issues to manage these efforts.</li>
+<li>GitHub branching was used for each Issue.</li>
+<li>GitHub Releases were used to distinguish major developments of the RShiny App.</li>
+</ul>
+<p>Please see the <em>README.md</em> file for more information.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><img src="screenshots/dashboard_photo.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption margin-caption">Invasive Animal Species Dashboard (Version 1.0.0)</figcaption></figure>
+</div>
+</section></section><section id="references" class="level1"><h1>References</h1>
+<p>Atlas of Living Australia website at http://www.ala.org.au. Accessed 18 October 2023.</p>
+<p>Hughes AC, Orr MC, Ma K, Costello MJ, Waller J, Provoost P, Yang Q, Zhu C, Qiao H (2021). Sampling biases shape our view of the natural world. <em>Ecography</em>. pp.&nbsp;1259-1269. <a href="https://doi.org/10.1111/ecog.05926" class="uri">https://doi.org/10.1111/ecog.05926</a></p>
+<p>Boakes EH, McGowan PJK, Fuller RA, Chang-qing D, Clark NE, O’Connor K, et al.&nbsp;(2010) Distorted Views of Biodiversity: Spatial and Temporal Bias in Species Occurrence Data. <em>PLoS Biol</em> 8(6): e1000385. https://doi.org/10.1371/journal.pbio.1000385</p>
+<p>Guerin GR, Biffin E, Baruch Z, Lowe AJ (2016). Identifying Centres of Plant Biodiversity in South Australia. <em>PLoS ONE</em> 11(1): e0144779. https://doi.org/10.1371/journal.pone.0144779</p>
+<p>Kearney SG, Carwardine J, Reside AE et al.&nbsp;(2018). The threats to Australia’s imperilled species and implications for a national conservation response. <em>CSIRO</em>. <a href="https://www.nespthreatenedspecies.edu.au/media/qile4abf/kearney-et-al-2018_the-threats-to-aus-species_postprint.pdf" class="uri">https://www.nespthreatenedspecies.edu.au/media/qile4abf/kearney-et-al-2018_the-threats-to-aus-species_postprint.pdf</a>.</p>
+<p>Kellie D (2022). Quantify geographic sampling bias with sampbias. <em>ALA Labs</em>. <a href="https://labs.ala.org.au/posts/2022-07-22_sample-bias/post.html?panelset=mantids" class="uri">https://labs.ala.org.au/posts/2022-07-22_sample-bias/post.html?panelset=mantids</a></p>
+<p>Ramachandran R, Bugbee K, &amp; Murphy K (2021). From open data to open science. <em>Earth and Space Science</em>, 8, e2020EA001562. https://doi.org/10.1029/2020EA001562</p>
+<p>Smith A, Torresan O, Kellie D (2023). An exploration of dingo observations in the ALA. <em>ALA Labs</em>. <a href="https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html" class="uri">https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html</a>.</p>
+<p>Tedersoo L, Küngas R, Oras E et al.&nbsp;Data sharing practices and data availability upon request differ across scientific disciplines. <em>Sci Data</em> 8, 192 (2021). https://doi.org/10.1038/s41597-021-00981-0</p>
+<p>Piccolo RL, Warnken J, Chauvenet ALM. et al.&nbsp;Location biases in ecological research on Australian terrestrial reptiles. <em>Sci Rep</em> 10, 9691 (2020). https://doi.org/10.1038/s41598-020-66719-x</p>
+<p>Wilkinson M, Dumontier M, Aalbersberg I et al.&nbsp;The FAIR Guiding Principles for scientific data management and stewardship. <em>Sci Data</em> 3, 160018 (2016). https://doi.org/10.1038/sdata.2016.18</p>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left"><span class="faux-block">© 2023 Johann Wagner CC0-1.0 License</span></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right"><span class="faux-block"><a href="https://github.com/johann-wagner/johann-wagner">View source code on my GitHub</a></span></div>
+  </div>
+</footer>
+
+
+</body></html>
