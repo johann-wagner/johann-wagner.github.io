@@ -256,7 +256,7 @@
     "href": "posts_sub_page/posts/invasive_species_dashboard_report/index.html",
     "title": "Invasive Animal Species Dashboard",
     "section": "",
-    "text": "Words: 1999 words\nFigures: 3"
+    "text": "This is a university assignment for the course Data Science for Biology at the Australian National University (ANU). The purpose of the assignment was to formulate a research question, use R and a relevant dataset to address the question and communicate the analysis into a report and a poster.\nI developed an RShiny Dashboard visualising seven different invasive species by state/territory using ALA data through the galah package with a focus on spatial and temporal visualisations. The dashboard also allows users to download the cleaned dataset for the selected invasive animal species for a particular state/territory.\nThe Dashboard is available here.\nThe GitHub repository is available here.\nEnjoy! :)"
   },
   {
     "objectID": "posts_sub_page/posts/invasive_species_dashboard_report/index.html#initial-aims",
