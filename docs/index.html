@@ -32,7 +32,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -63,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -120,32 +119,39 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a>
-  <ul class="collapse">
-  <li><a href="#hi-im-johann" id="toc-hi-im-johann" class="nav-link" data-scroll-target="#hi-im-johann">Hi, I’m Johann! 🖐</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-
-<section id="welcome" class="level1">
-<h1>Welcome!</h1>
+<div class="quarto-about-solana column-body">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Johann Wagner</h1>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header> <div class="about-links">
+  <a href="https://www.linkedin.com/in/johannwagner/" class="about-link" rel="" target="">
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+  <a href="https://github.com/johann-wagner" class="about-link" rel="" target="">
+     <span class="about-link-text">Github</span>
+  </a>
+  <a href="mailto:johann.wagner@gmail.com" class="about-link" rel="" target="">
+     <span class="about-link-text">Email</span>
+  </a>
+</div>
+      <div class="about-contents"><main class="content" id="quarto-document-content">
 <section id="hi-im-johann" class="level3">
-<h3 class="anchored" data-anchor-id="hi-im-johann">Hi, I’m Johann! 🖐</h3>
+<h3 data-anchor-id="hi-im-johann">Hi, I’m Johann! 🖐</h3>
 <section id="nice-to-meet-you" class="level4">
-<h4 class="anchored" data-anchor-id="nice-to-meet-you">Nice to meet you! 😊</h4>
+<h4 data-anchor-id="nice-to-meet-you">Nice to meet you! 😊</h4>
+<section id="about-me" class="level5">
+<h5 data-anchor-id="about-me">About Me</h5>
 <p>I’m an economic/data analyst at the Department of Education (Australian Government). I completed my Bachelor of Economics minoring in <a href="https://programsandcourses.anu.edu.au/2023/minor/emet-min">Econometrics</a> and Bachelor of Science majoring in <a href="https://programsandcourses.anu.edu.au/2023/major/quem-maj">Quantitative Environmental Modelling</a> and minoring in <a href="https://programsandcourses.anu.edu.au/2023/minor/apst-min">Applied Statistics</a> from the Australian National University in 2023. You can access my CV <a href="./cv/index.html">here</a>.</p>
+</section>
 <section id="passion" class="level5">
-<h5 class="anchored" data-anchor-id="passion">Passion</h5>
+<h5 data-anchor-id="passion">Passion</h5>
 <ul>
 <li>Data Analysis</li>
 <li>Data Visualisation</li>
@@ -154,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 <section id="extra-curricalar" class="level5">
-<h5 class="anchored" data-anchor-id="extra-curricalar">Extra-Curricalar</h5>
+<h5 data-anchor-id="extra-curricalar">Extra-Curricalar</h5>
 <ul>
 <li>Co-Chair Data Analyst Network 2024</li>
 <li>Ultimate Frisbee</li>
@@ -165,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 <section id="you-can-contact-me-via" class="level5">
-<h5 class="anchored" data-anchor-id="you-can-contact-me-via">You can contact me via:</h5>
+<h5 data-anchor-id="you-can-contact-me-via">You can contact me via:</h5>
 <ul>
 <li><a href="https://www.linkedin.com/in/johannwagner/">LinkedIn</a></li>
 <li><a href="https://github.com/johann-wagner">GitHub</a></li>
@@ -189,9 +195,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 </section>
-</section>
-
-</main> <!-- /main -->
+</main></div>
+    </div>
+    <img src="images/jw_professional_photo_close.png" class="about-image
+  round " style="height: 20em; width: 20em;">
+  </div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -212,13 +222,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
