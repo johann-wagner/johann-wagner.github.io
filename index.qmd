@@ -3,92 +3,86 @@ title: "Johann Wagner"
 image: "images/jw_professional_photo_close.png"
 toc: false
 about:
-  template: solana
+  template: trestles
   image-shape: round
   image-width: 20em
   links:
-    - text: LinkedIn
+    - icon: linkedin
+      text: LinkedIn
       href: https://www.linkedin.com/in/johannwagner/
-    - text: Github
+    - icon: github
+      text: Github
       href: https://github.com/johann-wagner
-    - text: Email
+    - icon: envelope
+      text: Email
       href: "mailto:johann.wagner@gmail.com"
 ---
 
-### Hi, I'm Johann! 🖐
-#### Nice to meet you! 😊
+### Hi there, I'm Johann (he/him)! 👋
 
-##### About Me
-I'm an economic/data analyst at the Department of Education (Australian Government). I completed my Bachelor of Economics minoring in [Econometrics](https://programsandcourses.anu.edu.au/2023/minor/emet-min) and Bachelor of Science majoring in [Quantitative Environmental Modelling](https://programsandcourses.anu.edu.au/2023/major/quem-maj) and minoring in [Applied Statistics](https://programsandcourses.anu.edu.au/2023/minor/apst-min) from the Australian National University in 2023. You can access my CV [here](cv/index.qmd).
+##### Nice to meet you! 😊
 
-##### Passion
+---
 
--   Data Analysis
--   Data Visualisation
--   Public Health Data
--   Environmental Data
+I'm an economic/data analyst at the [Department of Education](https://www.education.gov.au/) (Australian Government). I completed my Bachelor of Economics and Bachelor of Science specialising in [Quantitative Environmental Modelling](https://programsandcourses.anu.edu.au/2023/major/quem-maj), [Econometrics](https://programsandcourses.anu.edu.au/2023/minor/emet-min), and [Applied Statistics](https://programsandcourses.anu.edu.au/2023/minor/apst-min) at the Australian National University (2023). 📊📚💡
 
-##### Extra-Curricalar
+---
 
--   Co-Chair Data Analyst Network 2024
--   Ultimate Frisbee
--   Adventure Racing
--   Rogaining
--   Mountain Biking
--   Running
+##### 🌱 My Interests:
+- **Continuous self-learning 📚**
+  - Data Science
+  - Backpacking Travel
+  - Open Science
+  
+- **Endurance sports 🚲**
+  - Adventure Racing
+  - Mountain Biking
+  - Bikepacking
 
-##### You can contact me via:
+- **Data-driven solutions 📊** 
+  - Economic Modelling
+  - Environmental Modelling
+  - Spatial Visualisation
+  
+---
 
--   [LinkedIn](https://www.linkedin.com/in/johannwagner/)
--   [GitHub](https://github.com/johann-wagner)
--   Email: [johann.wagner@gmail.com](mailto:johann.wagner@gmail.com)
+##### 📈 My Broad Goals:
+- Embrace **quality time spent with friends and family** enjoying the fun adventures 😋
+- Navigate the vast data role ecosystem and try and **figure out where I best fit in** 💻
+- Immerse myself in the data science community by **sharing my data projects** on my website and on LinkedIn ✏️
+- **Contribute to open source** software and promote Open Science! 🧪
 
-This website was built using [Quarto](https://quarto.org/). The source code can be found [here](https://github.com/johann-wagner/johann-wagner). I'd like to thank [Marvin Schmitt](https://www.marvinschmitt.com/blog/website-tutorial-quarto/) and [Melissa Van Bussell](https://youtu.be/nuYNCPRf8Js?si=mL9L7ic3PdJcs5C7) for their tutorials on how to build a website using Quarto.
+---
 
-💅💅💅
+##### 🌱 My Current Experience:
+- Designed and implemented economic modelling using **statistical and econometric methods** 🔬
+- Upskilled my team and the Department **promoting data culture, best coding practices,** and improved workflows using modularised R Project environments 📈
+- Conducted literature reviews and **communicating complex models with simple language** and impactful data visualisations 💼
 
+---
 
-DRAFT
+##### ✅ Moving Forward:
+- I'm **always keen to chat** about data science, R programming, and open science. I'm also a big fan of open source software and the R programming language. 🌱🎓
+- **Shoot me a message on LinkedIn or via email** or any other method you prefer! 🤓
 
-Here's some hypothetical R code for inspiration:
-johann_wagner <- my_life |>
-                group_by(experience, education) |>
-                summarise(passion = "Data-driven Insights", values = "Balance, Love, Community", creativity = "Thanks ChatGPT")
-                
-Dear ChatGPT...  Please write me a LinkedIn "About" section using my resume below as a guide. Make it fun, but still informative and under 2,600 characters. Ensure to have plenty of fun emojis! Thanks! 😋
-🔍🔍🔍🔍🔍  See the "result" below!  🔍🔍🔍🔍🔍
+---
 
+##### 🔗 Links:
+Here are some useful links you might be interested in:
 
-👋 👋 👋  Hey there, hopefully that caught your attention!! 👋 👋 👋 
-My name is Johann. 😋
-I have a passion for continuous self-learning and data-driven solutions. 📊📚💡
+- 💼 [My CV](cv/index.qmd)
+- 📊 [My Data Projects](projects/index.qmd)
+- ✏️️ [My Blog](blog/index.qmd)
+- 🤓 [My GitHub](https://github.com/johann-wagner)
 
-📈 My Broad Goals:
-- 🚴 Embrace time spent with my friends and family nourishing the fun adventures had! 😋
-- 💻 Navigate the vast realm of data analytics and data science and try and figure out where I best fit in! 
-- ✏️ Immersing myself in the data science community by sharing my data projects on my website and on LinkedIn
-- 🧪 Contribute to open source software and promote Open Science! 
+---
 
-🌱 My Current Experience:
-- 🔬 designed and implemented economic modeling using statistical and econometric methods, 
-- 📈 upskilled my team and the Department with R tips and best practices,
-- 💼 conducted literature reviews and communicating with simple, yet impactful data visualisations, 
-- 💡 championed the integration of generative AI tools in R programming.
+##### 📙 Acknowledgements:
+This website was built using [Quarto](https://quarto.org/).
 
-🎓 My Education:
-I finished a Bachelor of Economics and a Bachelor of Science, specialising in quantitative environmental modeling, econometrics, and applied statistics. Although I'm thinking about doing honours and potentially further research down the line. 🔬🧪
+The source code can be found on my [GitHub](https://github.com/johann-wagner/johann-wagner.github.io).
 
- ✍🏼 My Website:
-I've only recently created this website, but I'll be sharing some insights from my data projects:
-https://johann-wagner.github.io/johann-wagner/
+I'd like to thank [Marvin Schmitt](https://www.marvinschmitt.com/blog/website-tutorial-quarto/), [Melissa Van Bussell](https://youtu.be/nuYNCPRf8Js?si=mL9L7ic3PdJcs5C7), [Samantha Csik](https://ucsb-meds.github.io/creating-quarto-websites/#fa-edit-titlepencil-and-paper-where-you-should-start-changing-stuff) for their tutorials on how to build a website using Quarto. Their clarity of instructions made it easy for me to build this website and **encourage you to check out their work.**
 
-🤓 My GitHub:
-This is where I store most of my data projects.
-https://github.com/johann-wagner
-
-✅ Moving Forward:
-- Nice to meet you!
-- I'm always keen to chat about data science!
-- So feel free to reach out to me on LinkedIn or via email or any other method you prefer!
-
-THANKS FOR READING UNTL THE END 💅💅💅
+---
+Thanks for reading until the end. 💅💅💅
