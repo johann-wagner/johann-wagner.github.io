@@ -1,6 +1,15 @@
 # This file controls the settings for my Quarto website.
 
 # Website Settings
+project:
+  type: website
+  output-dir: docs
+  preview:
+    port: 22222
+    browser: true
+    watch-inputs: true
+    navigate: true
+
 website:
   title: "Johann Wagner"
 
@@ -9,6 +18,10 @@ website:
 
     # Sub-pages
     left:
+
+      - text: "Home"
+        href: index.qmd
+
       - text: "Projects"
         href: projects/index.qmd
 
@@ -35,23 +48,17 @@ website:
     left: |
       <span class="faux-block">&#169; 2023 Johann Wagner CC0-1.0 License</span>
     right: |
-      <span class="faux-block"><a href="https://github.com/johann-wagner/johann-wagner">View source code on my GitHub</a></span>
-
-project:
-  type: website
-  output-dir: docs
-  preview:
-    port: 22222
-    browser: true
-    watch-inputs: true
-    navigate: true
+      <span class="faux-block"><a href="https://github.com/johann-wagner/johann-wagner.github.io">View source code on my GitHub</a></span>
 
 # Theme Settings
 format:
   html:
-    theme: flatly
+    theme:
+      light: united
+      dark: darkly
     css: styles.css
     toc: true
+    page-layout: full
     code-link: true
     anchor-sections: true
     fig-cap-location: margin
