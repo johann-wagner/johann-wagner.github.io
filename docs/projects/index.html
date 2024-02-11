@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Johann Wagner - Posts</title>
+<title>Johann Wagner - Projects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,43 +60,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -120,11 +87,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects/index.html" rel="" target="">
+    <a class="nav-link active" href="../projects/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../posts_sub_page/index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../posts_sub_page/index.html" rel="" target="">
  <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
@@ -157,10 +124,10 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Posts</h1>
+    <div class="quarto-title column-page-right">
+      <h1 class="title">Projects</h1>
                       </div>
   </div>
     
@@ -175,136 +142,130 @@ ul.task-list li input[type="checkbox"] {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#active-projects" id="toc-active-projects" class="nav-link active" data-scroll-target="#active-projects">Active Projects</a>
+  <ul class="collapse">
+  <li><a href="#invasive-species-rshiny-dashboard" id="toc-invasive-species-rshiny-dashboard" class="nav-link" data-scroll-target="#invasive-species-rshiny-dashboard">Invasive Species RShiny Dashboard</a></li>
+  <li><a href="#spotify-exploratory-data-analysis" id="toc-spotify-exploratory-data-analysis" class="nav-link" data-scroll-target="#spotify-exploratory-data-analysis">Spotify Exploratory Data Analysis</a></li>
+  <li><a href="#d20-simulation" id="toc-d20-simulation" class="nav-link" data-scroll-target="#d20-simulation">D20 Simulation</a></li>
+  <li><a href="#leadership-compass" id="toc-leadership-compass" class="nav-link" data-scroll-target="#leadership-compass">Leadership Compass</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Data Projects">Data Projects <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Exploratory Data Analysis">Exploratory Data Analysis <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Spotify">Spotify <span class="quarto-category-count">(1)</span></div><div class="category" data-category="University Assignment">University Assignment <span class="quarto-category-count">(1)</span></div></div></div>
-<!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
-
-
-
-
-<p>Welcome to Johann’s posts sub-page.</p>
-<p>I write a variety of content from personal data analysis projects to tutorials on how to use various tools and general personal blog posts as well. I hope you find something useful here! :)</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Data Projects,Exploratory Data Analysis,Spotify" data-listing-date-sort="1703768400000" data-listing-file-modified-sort="1703817623357" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
-<div class="thumbnail">
-<p><a href="../posts_sub_page/posts/spotify_exploratory_data_analysis_streaming_history_data/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts_sub_page/posts/spotify_exploratory_data_analysis_streaming_history_data/index.html --> </a></p>
-</div>
-<div class="body">
-<a href="../posts_sub_page/posts/spotify_exploratory_data_analysis_streaming_history_data/index.html">
-<h3 class="no-anchor listing-title">
-Spotify Exploratory Data Analysis - Streaming History Data
-</h3>
-<div class="listing-subtitle">
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-right" id="quarto-document-content">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Data Projects'); return false;">
-Data Projects
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Exploratory Data Analysis'); return false;">
-Exploratory Data Analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Spotify'); return false;">
-Spotify
-</div>
-</div>
-<a href="../posts_sub_page/posts/spotify_exploratory_data_analysis_streaming_history_data/index.html">
-<div class="listing-description">
-<p>My Spotify streaming history throughout July 2022/2023</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../posts_sub_page/posts/spotify_exploratory_data_analysis_streaming_history_data/index.html">
-<div class="listing-date">
-Dec 29, 2023
-</div>
-<div class="listing-author">
-Johann Wagner
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Data Projects,Exploratory Data Analysis,University Assignment" data-listing-date-sort="1697720400000" data-listing-file-modified-sort="1707649245433" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13">
-<div class="thumbnail">
-<p><a href="../posts_sub_page/posts/invasive_species_dashboard_report/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts_sub_page/posts/invasive_species_dashboard_report/index.html --> </a></p>
-</div>
-<div class="body">
-<a href="../posts_sub_page/posts/invasive_species_dashboard_report/index.html">
-<h3 class="no-anchor listing-title">
-Invasive Animal Species Dashboard
-</h3>
-<div class="listing-subtitle">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Data Projects'); return false;">
-Data Projects
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Exploratory Data Analysis'); return false;">
-Exploratory Data Analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('University Assignment'); return false;">
-University Assignment
-</div>
-</div>
-<a href="../posts_sub_page/posts/invasive_species_dashboard_report/index.html">
-<div class="listing-description">
-<p>University Assignment: Developing an RShiny dashboard to visualise invasive animal species in Australia</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="../posts_sub_page/posts/invasive_species_dashboard_report/index.html">
-<div class="listing-date">
-Oct 20, 2023
-</div>
-<div class="listing-author">
-Johann Wagner
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+
+
+<p>Here are some of my past and current projects:</p>
+<section id="active-projects" class="level1">
+<h1>Active Projects</h1>
+<section id="invasive-species-rshiny-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="invasive-species-rshiny-dashboard">Invasive Species RShiny Dashboard</h2>
+<section id="purpose" class="level4">
+<h4 class="anchored" data-anchor-id="purpose">Purpose:</h4>
+<p>This project is complete. The dashboard is currently hosted on <a href="https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/">shinyapps.io</a>. The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.</p>
+</section>
+<section id="project-scope" class="level4">
+<h4 class="anchored" data-anchor-id="project-scope">Project Scope:</h4>
+<p>This project was the final assignment for the <a href="https://programsandcourses.anu.edu.au/2023/course/biol3207">Data Science for Biologists (DS4B)</a> university course.</p>
+<p>The project had the following brief: Your task is to:</p>
+<ul>
+<li>choose a dataset or combination of datasets</li>
+<li>develop some questions/aims related to that dataset, including appropriate background research</li>
+<li>use R t |&gt; o address those questions/aims</li>
+<li>write your findings into a report of up to 2000 words and 10 figures</li>
+<li>summarise your findings in a poster which you will present in the week 12 workshop</li>
+</ul>
+<p>Ideally, you should choose a combination of dataset and questions/aims that are interesting to you, because the more interesting you find it, the better your work will be!</p>
+</section>
+<section id="links" class="level4">
+<h4 class="anchored" data-anchor-id="links">Links:</h4>
+<ul>
+<li><p><a href="https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/">RShiny Dashboard</a></p></li>
+<li><p><a href="https://github.com/johann-wagner/DS4B-final-project/blob/main/u6958957_poster.pdf">Poster</a></p></li>
+<li><p><a href="https://github.com/johann-wagner/DS4B-final-project">GitHub Repository</a></p></li>
+</ul>
+</section>
+</section>
+<section id="spotify-exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="spotify-exploratory-data-analysis">Spotify Exploratory Data Analysis</h2>
+<section id="purpose-1" class="level4">
+<h4 class="anchored" data-anchor-id="purpose-1">Purpose:</h4>
+<p>Explore Johann’s personal Spotify data and discover patterns in his listening habits.</p>
+</section>
+<section id="project-status" class="level4">
+<h4 class="anchored" data-anchor-id="project-status">Project Status:</h4>
+<ul>
+<li>Currently working on looking at the streaming history data.</li>
+<li>Next step is to look at the playlist data and await the entire streaming history data to be available (late Jan 2024).</li>
+<li>The final step is to create an RShiny dashboard to visualise the data and create some basic descriptive statistics.</li>
+<li>Ideally, this RShiny will allow individuals to upload their own personal Spotify data and explore their own listening habits.</li>
+<li>Additionally, I would like to recreate my own version of the Spotify Wrapped.</li>
+<li>Need to explore the Spotify API and see how I can integrate it into the RShiny dashboard.</li>
+<li>Look into other people’s Spotify and R projects to see what I can learn from them.</li>
+</ul>
+</section>
+<section id="links-1" class="level4">
+<h4 class="anchored" data-anchor-id="links-1">Links:</h4>
+<ul>
+<li><a href="https://github.com/johann-wagner/spotify-analysis">GitHub Repository</a>.</li>
+<li><a href="https://developer.spotify.com/documentation/web-api/">Spotify API</a>.</li>
+</ul>
+</section>
+</section>
+<section id="d20-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="d20-simulation">D20 Simulation</h2>
+<section id="purpose-2" class="level4">
+<h4 class="anchored" data-anchor-id="purpose-2">Purpose:</h4>
+<p>Calculating the probability mass function of a d20 twenty times and adding a rule of rolling another 6 times if a 20 is rolled.</p>
+</section>
+<section id="project-status-1" class="level4">
+<h4 class="anchored" data-anchor-id="project-status-1">Project Status:</h4>
+<ul>
+<li>Create an RShiny Dashboard</li>
+<li>Rewrite the code to incorporate <code>rbinom()</code>, instead of using <code>runif()</code>.</li>
+</ul>
+</section>
+<section id="links-2" class="level4">
+<h4 class="anchored" data-anchor-id="links-2">Links:</h4>
+<ul>
+<li><a href="https://github.com/johann-wagner/d20-simulation">GitHub Repository</a></li>
+</ul>
+</section>
+</section>
+<section id="leadership-compass" class="level2">
+<h2 class="anchored" data-anchor-id="leadership-compass">Leadership Compass</h2>
+<section id="purpose-3" class="level4">
+<h4 class="anchored" data-anchor-id="purpose-3">Purpose:</h4>
+<p>Create an R script that creates a visualisation of the results from the leadership compass survey.</p>
+</section>
+<section id="project-status-2" class="level4">
+<h4 class="anchored" data-anchor-id="project-status-2">Project Status:</h4>
+<p>This project is currently in progress. There are still major improvements to be made to the visualisation and the data workflow. An excel file containing the survey results is currently being used as the data source. The next step is to create a Google Form to collect the survey results and then use the Google Form API to pull the data into the R script. Potentially, this can further be all incoroprated into an RShiny App.</p>
+</section>
+<section id="links-3" class="level4">
+<h4 class="anchored" data-anchor-id="links-3">Links:</h4>
+<ul>
+<li><a href="https://github.com/johann-wagner/leadership_compass">GitHub Repository</a></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
