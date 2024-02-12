@@ -55,7 +55,7 @@ I'm an economic/data analyst at the [Department of Education](https://www.educat
 ---
 
 ##### 🌱 My Current Experience:
-- Economic / Data Analyst at the [Australian Government Department of Education](https://www.education.gov.au/) (2023 - Present) 🏛
+- Economic / Data Analyst at the [Department of Education](https://www.education.gov.au/) (2023 - Present) 🏛
 - Intern Consultant at [Nous Group](https://nousgroup.com/) (2022) 💼
 - Student Data Scientist at the [Australian Bureau of Statistics](https://www.abs.gov.au/) (2022) 📊
 - Data Officer at [ACT Health](https://www.health.act.gov.au/) (2021 - 2022) 🦠
