@@ -11,6 +11,12 @@ page-layout: full
 title-block-banner: true
 ---
 
-Welcome to Johann's posts sub-page.
+Welcome to Johann's Knowledge Sharing Posts.
 
-I write a variety of content from personal data analysis projects to tutorials on how to use various tools and general personal blog posts as well. I hope you find something useful here! :)
+I write a variety of content:
+
+- one-off data analysis
+- useful R tips and tricks
+- blog posts
+
+I hope you find something useful here! 😊

@@ -6,9 +6,9 @@ toc-location: left
 title-block-banner: true
 ---
 
-Here are some of my past and current projects:
+Here are some of my completed, active, and archived (ideas that didn't fruition) projects:
 
-# Active Projects
+# Completed Projects
 
 ## Invasive Species RShiny Dashboard
 
@@ -23,7 +23,7 @@ The project had the following brief: Your task is to:
 
 -   choose a dataset or combination of datasets
 -   develop some questions/aims related to that dataset, including appropriate background research
--   use R t |> o address those questions/aims
+-   use R to address those questions/aims
 -   write your findings into a report of up to 2000 words and 10 figures
 -   summarise your findings in a poster which you will present in the week 12 workshop
 
@@ -36,6 +36,8 @@ Ideally, you should choose a combination of dataset and questions/aims that are 
 -   [Poster](https://github.com/johann-wagner/DS4B-final-project/blob/main/u6958957_poster.pdf)
 
 -   [GitHub Repository](https://github.com/johann-wagner/DS4B-final-project)
+
+# Archived Project Ideas
 
 ## Spotify Exploratory Data Analysis
 
@@ -54,20 +56,6 @@ Explore Johann's personal Spotify data and discover patterns in his listening ha
 #### Links:
 -   [GitHub Repository](https://github.com/johann-wagner/spotify-analysis).
 -   [Spotify API](https://developer.spotify.com/documentation/web-api/).
-
-## D20 Simulation
-
-#### Purpose:
-
-Calculating the probability mass function of a d20 twenty times and adding a rule of rolling another 6 times if a 20 is rolled.
-
-#### Project Status:
--   Create an RShiny Dashboard
--   Rewrite the code to incorporate `rbinom()`, instead of using `runif()`.
-
-#### Links:
-
--   [GitHub Repository](https://github.com/johann-wagner/d20-simulation)
 
 ## Leadership Compass
 
