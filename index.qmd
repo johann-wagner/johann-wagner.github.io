@@ -24,14 +24,14 @@ about:
 
 ---
 
-I'm an economic/data analyst at the [Department of Education](https://www.education.gov.au/) (Australian Government). I completed my Bachelor of Economics and Bachelor of Science specialising in [Quantitative Environmental Modelling](https://programsandcourses.anu.edu.au/2023/major/quem-maj), [Econometrics](https://programsandcourses.anu.edu.au/2023/minor/emet-min), and [Applied Statistics](https://programsandcourses.anu.edu.au/2023/minor/apst-min) at the Australian National University (2023). I love learning about data science, quality time with friends, endurance sports, and travelling. 📊📚💡
+I'm a Data Scientist working at [Jobs and Skills Australia](https://www.jobsandskills.gov.au/) (Australian Government). I completed my Bachelor of Economics and Bachelor of Science specialising in [Quantitative Environmental Modelling](https://programsandcourses.anu.edu.au/2023/major/quem-maj), [Econometrics](https://programsandcourses.anu.edu.au/2023/minor/emet-min), and [Applied Statistics](https://programsandcourses.anu.edu.au/2023/minor/apst-min) at the Australian National University (2023). I love learning about all things data, spending quality time with friends, endurance sports (type 2 fun), and travelling. 📊📚💡
 
 ---
 
 ##### 🌱 My Interests:
 - **Continuous self-learning 📚**
   - Data Science
-  - Backpacking Travel
+  - Economics / Health Analytics
   - Open Science
   
 - **Endurance sports 🚲**
@@ -55,7 +55,8 @@ I'm an economic/data analyst at the [Department of Education](https://www.educat
 ---
 
 ##### 🌱 My Current Experience:
-- Economic / Data Analyst at the [Department of Education](https://www.education.gov.au/) (2023 - Present) 🏛
+- Data Scientist at [Jobs and Skills Australia](https://www.jobsandskills.gov.au/) (2024 - Present)
+- Economic / Data Analyst at the [Department of Education](https://www.education.gov.au/) (2023 - 2024) 🏛
 - Intern Consultant at [Nous Group](https://nousgroup.com/) (2022) 💼
 - Student Data Scientist at the [Australian Bureau of Statistics](https://www.abs.gov.au/) (2022) 📊
 - Data Officer at [ACT Health](https://www.health.act.gov.au/) (2021 - 2022) 🦠
@@ -63,7 +64,7 @@ I'm an economic/data analyst at the [Department of Education](https://www.educat
 ---
 
 ##### ✅ Moving Forward:
-- I'm **always keen to chat** about data science, R programming, and open science. I'm also a big fan of open source software and the R programming language. 🌱🎓
+- I'm **always keen to chat** about all things data, R programming, and open science. I'm also a big fan of open source software and the R programming language. 🌱🎓
 - **Shoot me a message on LinkedIn or via email** or any other method you prefer! 🤓
 
 ---
@@ -73,7 +74,7 @@ Here are some useful links you might be interested in:
 
 - 💼 [My CV](cv/index.qmd)
 - 📊 [My Data Projects](projects/index.qmd)
-- ✏️️ [My Blog](posts_sub_page/index.qmd)
+- ✏️ [Johann's Knowledge Sharing](posts_sub_page/index.qmd)
 - 🤓 [My GitHub](https://github.com/johann-wagner)
 
 ---
