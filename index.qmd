@@ -74,7 +74,7 @@ Here are some useful links you might be interested in:
 
 - 💼 [My CV](cv/index.qmd)
 - 📊 [My Data Projects](projects/index.qmd)
-- ✏️ [Johann's Knowledge Sharing](posts_sub_page/index.qmd)
+- ✏️ [My Blog](blog/index.qmd)
 - 🤓 [My GitHub](https://github.com/johann-wagner)
 
 ---
