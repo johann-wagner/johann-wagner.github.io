@@ -172,7 +172,7 @@ There are 328,342 records with the same number of unique values in the `recordID
 
 Let's spatially showcase the data.
 
-```{r, include = FALSE, message = FALSE, fig.width = 7.5, fig.height = 10}
+```{r, include = FALSE, message = FALSE}
 #| layout: page
 # This takes a long time to run on my machine eeep...
 suppressPackageStartupMessages({
