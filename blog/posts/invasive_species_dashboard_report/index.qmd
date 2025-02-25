@@ -7,21 +7,25 @@ categories:
   - "Data Projects"
   - "Exploratory Data Analysis"
   - "University Assignment"
-toc: true
-toc-depth: 4
+format:
+  html:
+    highlight: pygments
+    toc: true
+    toc-depth: 4
+    toc_float: true
 theme: cosmo
 number-sections: false
-toc-float: true
-highlight: pygments
 fig-width: 8
 fig-height: 4
+execute:
+  freeze: auto
 ---
 
 # Brief Context
 
 This is a university assignment for the course [Data Science for Biology](https://programsandcourses.anu.edu.au/2022/course/BIOL3207) at the Australian National University (ANU). The purpose of the assignment was to formulate a research question, use R and a relevant dataset to address the question and communicate the analysis into a report and a poster.
 
-I developed an [RShiny Dashboard](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/) visualising seven different invasive species by state/territory using ALA data through the [`galah` package](https://github.com/AtlasOfLivingAustralia/galah-R) with a focus on spatial and temporal visualisations. The dashboard also allows users to download the cleaned dataset for the selected invasive animal species for a particular state/territory.
+I developed an [RShiny Dashboard](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/) visualising seven different invasive species by state/territory using ALA data through the [`galah`](https://github.com/AtlasOfLivingAustralia/galah-R) package with a focus on spatial and temporal visualisations. The dashboard also allows users to download the cleaned dataset for the selected invasive animal species for a particular state/territory.
 
 The Dashboard is available [here](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/).
 
@@ -67,7 +71,7 @@ Initially, I was interested in the spatial distribution of magpies in Canberra a
 
 This made me interested in simply visualising the data spatially, instead of using any statistical methodologies and focusing the project on whether there would be major differences/patterns of occurrence records in urban vs. non-urban/regional areas. Unfortunately, given the scope of the project, calculating the urban vs. non-urban analysis would have been too much scope-creep, so this aim was ignored (maybe post-project exploration).
 
-Hughes et al. ([2021](https://onlinelibrary.wiley.com/doi/10.1111/ecog.05926)) and Guerin et al. ([2016](https://doi.org/10.1371/journal.pone.0144779)) highlight the spatial sampling bias associated with biodiversity data suggesting that these biases must first be understood before applying any statistical modelling methods. Interestingly, Australian research by Piccolo et al. ([2020](https://www.nature.com/articles/s41598-020-66719-x)) show that reptile research locations are highly positively correlated with proximity to universities suggesting biodiversity research locations are closely associated by accessibility. Similarly, temporal biases can also influence results, as species distributions can change across time ([Boakes et al, 2010](https://doi.org/10.1371/journal.pbio.1000385)).
+Hughes et al. ([2021](https://onlinelibrary.wiley.com/doi/10.1111/ecog.05926)) and Guerin et al. ([2016](https://doi.org/10.1371/journal.pone.0144779)) highlight the spatial sampling bias associated with biodiversity data suggesting that these biases must first be understood before applying any statistical modelling methods. Interestingly, Australian research by Piccolo et al. ([2020](https://www.nature.com/articles/s41598-020-66719-x)) show that reptile research locations are highly positively correlated with proximity to universities suggesting biodiversity research locations are closely associated by accessibility. Similarly, temporal biases can also influence results, as species distributions can change across time ([Boakes et al., 2010](https://doi.org/10.1371/journal.pbio.1000385)).
 
 The Atlas of Living Australia already have a browser-based spatial visualisation tool, where a specific species can be selected and plotted on a map. However, there seemed to not be a functionality to comparing both the spatial _and_ temporal (by month) variables.
 
@@ -77,7 +81,7 @@ I chose invasive animal species, because of the rabbits I see when cycling in Ca
 
 A deeper understanding of my thought process is documented in GitHub Issue [`#4`](https://github.com/johann-wagner/DS4B-final-project/issues/4).
 
-The analysis was based on this [ALALabs article](https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html) ([Smith et al., 2023](https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html)).
+The analysis was based on this [ALA Labs article](https://labs.ala.org.au/posts/2023-05-16_dingoes/index.html) (Smith et al., 2023).
 
 # Raw data
 
@@ -134,7 +138,7 @@ The DOIs for each species:
 
 # Data wrangling
 
-Because the data is already in tidy format, the seven datasets are binded into one `tidied_data.csv`, then filtered with `excluded_data.csv`. The excluded data includes any `NA` values in the `eventDate`, `decimalLongitude`, and `decimalLatitude` columns and also includes data not located within any of the [*State and Territories - 2021*](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files) spatial boundaries provided by the Australian Bureau of Statistics (ABS). Further details of this process can be found in the [scripts folder](https://github.com/johann-wagner/DS4B-final-project/tree/main/scripts) and [data_cleaning.Rmd](https://github.com/johann-wagner/DS4B-final-project/blob/main/processed_data/data_cleaning.Rmd).
+Because the data is already in tidy format, the seven datasets are binded into one `tidied_data.csv`, then filtered with `excluded_data.csv`. The excluded data includes any `NA` values in the `eventDate`, `decimalLongitude`, and `decimalLatitude` columns and also includes data not located within any of the [*State and Territories - 2021*](https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files) spatial boundaries provided by the Australian Bureau of Statistics (ABS). Further details of this process can be found in the [scripts](https://github.com/johann-wagner/DS4B-final-project/tree/main/scripts) folder and [data_cleaning.Rmd](https://github.com/johann-wagner/DS4B-final-project/blob/main/processed_data/data_cleaning.Rmd).
 
 ```{r, message = FALSE, warning = FALSE}
 suppressPackageStartupMessages({
@@ -163,11 +167,12 @@ suppressPackageStartupMessages({
 skim(cleaned_data)
 ```
 
-There are 328,342 records with the same number of unique values in the `recordID` column indicating each record is distinct. There are 8 unique `state` values and 7 `simpleName` values, which makes sense. The latest `eventDate` value is 2023-10-09, which is not in the future.
+There are 328,342 records with the same number of unique values in the `recordID` column indicating each record is distinct. There are 8 unique `state` values and 7 `simpleName` values, which makes sense. The latest `eventDate` value is 2023-10-09, which is not in the future (at the time of this analysis!).
 
 Let's spatially showcase the data.
 
-```{r, warning = FALSE, message = FALSE, fig.width = 7.5, fig.height = 10}
+```{r, include = FALSE, message = FALSE, fig.width = 7.5, fig.height = 10}
+# This takes a long time to run on my machine eeep...
 suppressPackageStartupMessages({
   options(timeout = 1000)
   devtools::install_github("wfmackey/absmapsdata")
@@ -202,7 +207,7 @@ state2021 %>%
   labs(title = "Sanity Checked! All data points are in Australia!")
 ```
 
-Interestingly, it seems that there are a few observations that are to the east of the NSW border, which is likely an island part of NSW.
+Interestingly, it seems that there are a few observations that are to the east of the NSW border, which is likely an island part of NSW (Lord Howe Island!).
 
 # Addressing the questions/aims
 
@@ -227,6 +232,7 @@ The RShiny folder contains four files:
 Let's create the spatial visualisation using European Rabbits and ACT as the inputs.
 
 ```{r, warning = FALSE, message = FALSE}
+#| column: page
 library(scales)
 species_simple_name <- "European Rabbits"
 state_name <- "Australian Capital Territory"
@@ -344,7 +350,7 @@ The aim of creating a circular monthly bar plot of record proportions was to exp
 
 2.   The actual temporal species distribution. For example, maybe there are more cats in May in SA, because of reproduction behaviour?
 
-Let's create it for Feral Cats in SA (a screenshot was used, due to word count limitations: please see GitHub repo for details)
+Let's create it for Feral Cats in South Australia (A screenshot was used, see GitHub for code - this blog post is already so long...).
 
 ![Temporal Feral Cats in SA](screenshots/temporal_feral_cats_south_australia.png)
 
@@ -362,9 +368,11 @@ Ensuring the data followed FAIR principles included making the data findable, su
 -   GitHub branching was used for each Issue.
 -   GitHub Releases were used to distinguish major developments of the RShiny App.
 
-Please see the *README.md* file for more information.
+Please see the [README](https://github.com/johann-wagner/DS4B-final-project/blob/main/README.md) file for more information.
 
+::: {.column-screen-inset}
 ![Invasive Animal Species Dashboard (Version 1.0.0)](screenshots/dashboard_photo.png)
+:::
 
 # References
 
