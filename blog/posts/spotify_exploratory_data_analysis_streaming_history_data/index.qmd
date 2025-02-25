@@ -7,6 +7,8 @@ categories:
   - "Data Projects"
   - "Exploratory Data Analysis"
   - "Spotify"
+execute:
+  freeze: auto
 ---
 
 ## Introduction
