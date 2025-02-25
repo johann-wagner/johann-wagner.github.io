@@ -1,5 +1,6 @@
 ---
 title: "Blog"
+subtitle: "Just another Blog..."
 listing:
   contents: posts
   sort: "date desc"
@@ -11,13 +12,10 @@ page-layout: full
 title-block-banner: true
 ---
 
-Welcome to Johann's Knowledge Sharing Blog.
-
 I write about a bunch of different things:
 
 - one-off data analysis
 - useful R tips and tricks
 - personal blog posts
-- bikepacking
 
 I hope you find something useful here! 😊
