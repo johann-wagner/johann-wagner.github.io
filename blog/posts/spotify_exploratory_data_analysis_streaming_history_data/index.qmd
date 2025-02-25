@@ -8,7 +8,7 @@ categories:
   - "Exploratory Data Analysis"
   - "Spotify"
 execute:
-  freeze: auto
+  freeze: true
 ---
 
 ## Introduction

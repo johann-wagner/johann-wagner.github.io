@@ -19,7 +19,7 @@ number-sections: false
 fig-width: 8
 fig-height: 4
 execute:
-  freeze: auto
+  freeze: true
 ---
 
 # Brief Context
@@ -307,7 +307,7 @@ state2021 %>%
       bold(.(state_name))),
     shape = "Capital City",
     size = "Invasive Species"
-  )+
+  ) +
   theme(
     axis.title = element_blank(),
     axis.ticks = element_blank(),
