@@ -233,10 +233,8 @@ The RShiny folder contains four files:
 
 Let's create the spatial visualisation using European Rabbits and ACT as the inputs.
 
-::: {.column-screen-inset}
 
 ```{r, warning = FALSE, message = FALSE}
-#| column: page
 library(scales)
 species_simple_name <- "European Rabbits"
 state_name <- "Australian Capital Territory"
@@ -302,7 +300,7 @@ state2021 %>%
                     nrow() %>%
                     comma()
             })) ~
-            "records of" ~
+            "records:\n" ~
             bold(.(species_simple_name)) ~
             "in" ~
             bold(.(state_name))
@@ -344,7 +342,6 @@ state2021 %>%
 # 2: https://r-graph-gallery.com/239-custom-layout-legend-ggplot2.html
 ```
 
-:::
 
 Each green point represents one record. We can see that the majority of records are near Canberra with some patterns in Namadgi National Park, like Boboyan Road. Let's visualise some more maps.
 

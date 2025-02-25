@@ -561,10 +561,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><em>dashboard_data.csv:</em> is the cleaned occurrence data for the seven invasive species, including spatial and temporal variables.</p></li>
 <li><p><em>server.R</em> contains the back-end logic/code that takes the two inputs to dynamically create/adjust the visualisations/titles/downloads.</p></li>
 <li><p><em>ui.R</em> contains the front-end user-interface design and layout of the app.</p></li>
-</ul></section><section id="spatial-visualisation-european-rabbits-in-act" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="spatial-visualisation-european-rabbits-in-act">Spatial Visualisation: European Rabbits in ACT</h3>
+</ul></section><section id="spatial-visualisation-european-rabbits-in-act" class="level3"><h3 class="anchored" data-anchor-id="spatial-visualisation-european-rabbits-in-act">Spatial Visualisation: European Rabbits in ACT</h3>
 <p>Let’s create the spatial visualisation using European Rabbits and ACT as the inputs.</p>
-<div class="page-columns page-full">
-<div class="cell page-columns page-full">
+<div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span>
 <span><span class="va">species_simple_name</span> <span class="op">&lt;-</span> <span class="st">"European Rabbits"</span></span>
 <span><span class="va">state_name</span> <span class="op">&lt;-</span> <span class="st">"Australian Capital Territory"</span></span>
@@ -630,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>                    <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>                    <span class="fu"><a href="https://scales.r-lib.org/reference/comma.html">comma</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>            <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
-<span>            <span class="st">"records of"</span> <span class="op">~</span></span>
+<span>            <span class="st">"records:\n"</span> <span class="op">~</span></span>
 <span>            <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="va">species_simple_name</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
 <span>            <span class="st">"in"</span> <span class="op">~</span></span>
 <span>            <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="va">state_name</span><span class="op">)</span><span class="op">)</span></span>
@@ -664,16 +663,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span></span>
 <span>    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"transparent"</span>, colour <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display page-columns page-full">
-<div class="page-columns page-full">
-<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img column-screen-inset" width="768"></p>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># References:</span></span>
 <span><span class="co"># 1: https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html</span></span>
 <span><span class="co"># 2: https://r-graph-gallery.com/239-custom-layout-legend-ggplot2.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 <p>Each green point represents one record. We can see that the majority of records are near Canberra with some patterns in Namadgi National Park, like Boboyan Road. Let’s visualise some more maps.</p>
 </section><section id="temporal-visualisation" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="temporal-visualisation">Temporal Visualisation</h3>
