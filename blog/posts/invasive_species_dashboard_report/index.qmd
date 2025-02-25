@@ -175,7 +175,7 @@ Let's spatially showcase the data.
 # This takes a long time to run on my machine eeep...
 suppressPackageStartupMessages({
   options(timeout = 1000)
-  devtools::install_github("wfmackey/absmapsdata")
+  # devtools::install_github("wfmackey/absmapsdata")    # only need to do this once
   # To easily access the Australian Bureau of Statistics (ABS) spatial structures
   ### https://github.com/wfmackey/absmapsdata
   library(absmapsdata)
