@@ -293,21 +293,21 @@ state2021 %>%
 
   # Ref [1]
   labs(
-    title = bquote(
-        "There are" ~
-            bold(.({
-                spatial_data %>%
-                    nrow() %>%
-                    comma()
-            })) ~
-            "records:\n" ~
-            bold(.(species_simple_name)) ~
-            "in" ~
-            bold(.(state_name))
-    ),
+    title = bquote("There are" ~
+                     bold(.({
+                       spatial_data %>%
+                         nrow() %>%
+                         comma()
+                     })) ~
+                     "records:"),
+    subtitle = bquote(bold(.(
+      species_simple_name
+    )) ~
+      "in" ~
+      bold(.(state_name))),
     shape = "Capital City",
     size = "Invasive Species"
-  ) +
+  )+
   theme(
     axis.title = element_blank(),
     axis.ticks = element_blank(),

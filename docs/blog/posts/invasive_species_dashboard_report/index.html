@@ -622,21 +622,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span></span>
 <span>  <span class="co"># Ref [1]</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span></span>
-<span>        <span class="st">"There are"</span> <span class="op">~</span></span>
-<span>            <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="op">{</span></span>
-<span>                <span class="va">spatial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>                    <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>                    <span class="fu"><a href="https://scales.r-lib.org/reference/comma.html">comma</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>            <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
-<span>            <span class="st">"records:\n"</span> <span class="op">~</span></span>
-<span>            <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="va">species_simple_name</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
-<span>            <span class="st">"in"</span> <span class="op">~</span></span>
-<span>            <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="va">state_name</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="op">)</span>,</span>
+<span>    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="st">"There are"</span> <span class="op">~</span></span>
+<span>                     <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="op">{</span></span>
+<span>                       <span class="va">spatial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                         <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                         <span class="fu"><a href="https://scales.r-lib.org/reference/comma.html">comma</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>                     <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
+<span>                     <span class="st">"records:"</span><span class="op">)</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span></span>
+<span>      <span class="va">species_simple_name</span></span>
+<span>    <span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
+<span>      <span class="st">"in"</span> <span class="op">~</span></span>
+<span>      <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="va">state_name</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    shape <span class="op">=</span> <span class="st">"Capital City"</span>,</span>
 <span>    size <span class="op">=</span> <span class="st">"Invasive Species"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    axis.ticks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
