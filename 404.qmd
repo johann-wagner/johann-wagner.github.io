@@ -1,0 +1,5 @@
+---
+title: "404 Page Not Found!"
+---
+
+![Google Gemini with prompt "Bikepacking, mountains, trail running, computer R code, all in combination surrounded by a bold 404 text in cartoon style"](404.jpg)
