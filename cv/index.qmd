@@ -4,9 +4,9 @@ title: "CV"
 excerpt: My current CV
 engine: knitr 
 resources:
-  - "Johann_Wagner_CV_2024.pdf"
+  - "Johann_Wagner_CV_2025.pdf"
 cv:
-  pdf: "Johann_Wagner_CV_2024.pdf"
+  pdf: "Johann_Wagner_CV_2025.pdf"
 title-block-banner: true
 ---
 
@@ -21,4 +21,4 @@ title-block-banner: true
 </div>
 ```
 
-Download [Johann's CV](../cv/Johann_Wagner_CV_2024.pdf).
+Download [Johann's CV](../cv/Johann_Wagner_CV_2025.pdf).
