@@ -55,8 +55,8 @@ format:
   html:
     theme:
       light:
-      - united
       - custom.scss
+      - united
       dark:
       - darkly
       - custom.scss
