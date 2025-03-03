@@ -4,4 +4,14 @@
 
 // use Atkinson Hyperlegible font if available
 // https://fonts.google.com/specimen/Atkinson+Hyperlegible
-$font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
+// $font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
+
+
+// use Atkinson Hyperlegible font if available
+$font-family-sans-serif: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+/*-- scss:rules --*/
+// litera is serif by default: revert to san-serif
+p {
+  font-family: $font-family-sans-serif;
+}

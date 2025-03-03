@@ -54,8 +54,12 @@ website:
 format:
   html:
     theme:
-      light: [united, custom.scss]
-      dark: [darkly, custom.scss]
+      light:
+      - united
+      - custom.scss
+      dark:
+      - darkly
+      - custom.scss
     toc: true
     page-layout: full
     code-link: true
