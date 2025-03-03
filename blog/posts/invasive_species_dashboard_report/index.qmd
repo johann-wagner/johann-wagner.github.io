@@ -14,8 +14,6 @@ format:
     toc: true
     toc-depth: 4
     toc_float: true
-theme: cosmo
-number-sections: false
 fig-width: 8
 fig-height: 4
 execute:

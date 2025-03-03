@@ -1,1 +1,29 @@
+# The below YAML metadata is applied to all blog posts
+# https://quarto.org/docs/projects/quarto-projects.html#shared-metadata
+
+# This ensures blog posts are not re-rendered everytime a .qmd is rendered in
+# this project.
 freeze: true
+
+# HTML Authoring
+toc: true
+toc-title: Contents
+toc-location: left
+anchor-sections: true
+title-block-banner: false
+lang: en
+
+# Code
+code-fold: show
+code-line-numbers: true
+code-copy: true
+code-link: true
+
+# Appendix
+license: "CC0 1.0 Universal"
+citation: true
+
+# Default Author
+author:
+  - name: Johann Wagner
+    url: https://johann-wagner.github.io/
