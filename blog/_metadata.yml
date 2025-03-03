@@ -15,12 +15,3 @@ lang: en
 
 # Code
 code-copy: true
-
-# Appendix
-license: "CC0 1.0 Universal"
-citation: true
-
-# Default Author
-author:
-  - name: Johann Wagner
-    url: https://johann-wagner.github.io/
