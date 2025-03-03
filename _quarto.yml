@@ -56,8 +56,6 @@ format:
     theme:
       light: [united, custom.scss]
       dark: [darkly, custom.scss]
-    google-fonts:
-      - Atkinson Hyperlegible: [400, 700, 400italic, 700italic]
     toc: true
     page-layout: full
     code-link: true
