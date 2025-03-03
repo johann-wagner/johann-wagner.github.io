@@ -272,39 +272,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A deeper understanding of my thought process is documented in GitHub Issue <a href="https://github.com/johann-wagner/DS4B-final-project/issues/4"><code>#4</code></a>.</p>
 <p>The analysis was based on this <a href="https://labs.ala.org.au/posts/2023-05-16_dingoes/index.html">ALA Labs article</a> (Smith et al., 2023).</p>
 </section></section><section id="raw-data" class="level1"><h1>Raw data</h1>
-<p>The raw data is available using the <code>galah</code> package. A user must use an ALA-registered email at <a href="ala.org.au">ala.org.au</a> and use the <code>galah_config()</code> function. Once completed, the custom-function <code>load_galah_occurrence_data()</code> was used, where the input argument <code>species_name</code> was the aforementioned scientific names of the seven species.</p>
+<p>The raw data is available using the <code>galah</code> package. A user must use an ALA-registered email at <a href="ala.org.au">ala.org.au</a> and use the <code><a href="https://galah.ala.org.au/R/reference/galah_config.html">galah_config()</a></code> function. Once completed, the custom-function <code>load_galah_occurrence_data()</code> was used, where the input argument <code>species_name</code> was the aforementioned scientific names of the seven species.</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">### Purpose:</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># To load the occurrence data of any species within the Atlas</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># of Living Australia.</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">library</span>(galah)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>})</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">galah_config</span>(<span class="at">email =</span> <span class="st">"johann.wagner@gmail.com"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>load_galah_occurrence_data <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="co"># scientific name</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>  species_name</span>
-<span id="cb1-12"><a href="#cb1-12"></a>) {</span>
-<span id="cb1-13"><a href="#cb1-13"></a>  species_occurrence <span class="ot">&lt;-</span> <span class="fu">galah_call</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>    </span>
-<span id="cb1-15"><a href="#cb1-15"></a>    <span class="co"># To conduct a search for species scientific name</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>    <span class="fu">galah_identify</span>(species_name) <span class="sc">|&gt;</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a>    </span>
-<span id="cb1-18"><a href="#cb1-18"></a>    <span class="co"># Pre-applied filter to ensure quality-assured data</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>    <span class="co"># the "ALA" profile is designed to exclude lower quality records</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a>    <span class="fu">galah_apply_profile</span>(ALA) <span class="sc">|&gt;</span> </span>
-<span id="cb1-21"><a href="#cb1-21"></a>    <span class="fu">atlas_occurrences</span>(<span class="at">mint_doi =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-22"><a href="#cb1-22"></a>  </span>
-<span id="cb1-23"><a href="#cb1-23"></a>  <span class="fu">return</span>(species_occurrence)</span>
-<span id="cb1-24"><a href="#cb1-24"></a>}</span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># References:</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># - [1] https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/692effa3-b719-495f-a86f-ce89e2981652</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="co"># - [2] https://galah.ala.org.au/R/reference/galah_apply_profile.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">### Purpose:</span></span>
+<span><span class="co"># To load the occurrence data of any species within the Atlas</span></span>
+<span><span class="co"># of Living Australia.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://galah.ala.org.au/R/">galah</a></span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://galah.ala.org.au/R/reference/galah_config.html">galah_config</a></span><span class="op">(</span>email <span class="op">=</span> <span class="st">"johann.wagner@gmail.com"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">load_galah_occurrence_data</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
+<span>  <span class="co"># scientific name</span></span>
+<span>  <span class="va">species_name</span></span>
+<span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">species_occurrence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://galah.ala.org.au/R/reference/galah_call.html">galah_call</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    </span>
+<span>    <span class="co"># To conduct a search for species scientific name</span></span>
+<span>    <span class="fu"><a href="https://galah.ala.org.au/R/reference/identify.data_request.html">galah_identify</a></span><span class="op">(</span><span class="va">species_name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    </span>
+<span>    <span class="co"># Pre-applied filter to ensure quality-assured data</span></span>
+<span>    <span class="co"># the "ALA" profile is designed to exclude lower quality records</span></span>
+<span>    <span class="fu"><a href="https://galah.ala.org.au/R/reference/apply_profile.html">galah_apply_profile</a></span><span class="op">(</span><span class="va">ALA</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://galah.ala.org.au/R/reference/atlas_.html">atlas_occurrences</a></span><span class="op">(</span>mint_doi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">species_occurrence</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="co"># References:</span></span>
+<span><span class="co"># - [1] https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/692effa3-b719-495f-a86f-ce89e2981652</span></span>
+<span><span class="co"># - [2] https://galah.ala.org.au/R/reference/galah_apply_profile.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The DOIs for each species:</p>
 <ol type="1">
@@ -318,29 +317,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol></section><section id="data-wrangling" class="level1"><h1>Data wrangling</h1>
 <p>Because the data is already in tidy format, the seven datasets are binded into one <code>tidied_data.csv</code>, then filtered with <code>excluded_data.csv</code>. The excluded data includes any <code>NA</code> values in the <code>eventDate</code>, <code>decimalLongitude</code>, and <code>decimalLatitude</code> columns and also includes data not located within any of the <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/digital-boundary-files"><em>State and Territories - 2021</em></a> spatial boundaries provided by the Australian Bureau of Statistics (ABS). Further details of this process can be found in the <a href="https://github.com/johann-wagner/DS4B-final-project/tree/main/scripts">scripts</a> folder and <a href="https://github.com/johann-wagner/DS4B-final-project/blob/main/processed_data/data_cleaning.Rmd">data_cleaning.Rmd</a>.</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">library</span>(readr)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>})</span>
-<span id="cb2-5"><a href="#cb2-5"></a>  </span>
-<span id="cb2-6"><a href="#cb2-6"></a>excluded_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"processed_data/excluded_data.csv"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a>tidied_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"processed_data/tidied_data.csv"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a>cleaned_data <span class="ot">&lt;-</span> tidied_data <span class="sc">%&gt;%</span> </span>
-<span id="cb2-10"><a href="#cb2-10"></a>  <span class="fu">anti_join</span>(</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    excluded_data,</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    <span class="fu">join_by</span>(recordID)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="va">excluded_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"processed_data/excluded_data.csv"</span><span class="op">)</span></span>
+<span><span class="va">tidied_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"processed_data/tidied_data.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cleaned_data</span> <span class="op">&lt;-</span> <span class="va">tidied_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span></span>
+<span>    <span class="va">excluded_data</span>,</span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a></span><span class="op">(</span><span class="va">recordID</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sanity-checks" class="level1"><h1>Sanity checks</h1>
-<p>Let’s use <code>skim()</code> to do some sanity checks.</p>
+<p>Let’s use <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> to do some sanity checks.</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">library</span>(skimr)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>})</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">skim</span>(cleaned_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">cleaned_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
 <tbody>
@@ -567,115 +565,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></section><section id="spatial-visualisation-european-rabbits-in-act" class="level3"><h3 class="anchored" data-anchor-id="spatial-visualisation-european-rabbits-in-act">Spatial Visualisation: European Rabbits in ACT</h3>
 <p>Let’s create the spatial visualisation using European Rabbits and ACT as the inputs.</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>species_simple_name <span class="ot">&lt;-</span> <span class="st">"European Rabbits"</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>state_name <span class="ot">&lt;-</span> <span class="st">"Australian Capital Territory"</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a>dashboard_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"processed_data/dashboard_data.csv"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a>spatial_data <span class="ot">&lt;-</span> dashboard_data <span class="sc">%&gt;%</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>  <span class="fu">filter</span>(</span>
-<span id="cb4-10"><a href="#cb4-10"></a>    simpleName <span class="sc">==</span> species_simple_name,</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    state      <span class="sc">==</span> state_name</span>
-<span id="cb4-12"><a href="#cb4-12"></a>  )</span>
-<span id="cb4-13"><a href="#cb4-13"></a></span>
-<span id="cb4-14"><a href="#cb4-14"></a></span>
-<span id="cb4-15"><a href="#cb4-15"></a></span>
-<span id="cb4-16"><a href="#cb4-16"></a>capital_cities_data <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb4-17"><a href="#cb4-17"></a>  <span class="sc">~</span>state,                         <span class="sc">~</span>city,       <span class="sc">~</span>lat,     <span class="sc">~</span>lon,</span>
-<span id="cb4-18"><a href="#cb4-18"></a>  <span class="st">"Australian Capital Territory"</span>, <span class="st">"Canberra"</span>,  <span class="sc">-</span><span class="fl">35.2809</span>, <span class="fl">149.1300</span>,</span>
-<span id="cb4-19"><a href="#cb4-19"></a>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> state_name)</span>
-<span id="cb4-21"><a href="#cb4-21"></a></span>
-<span id="cb4-22"><a href="#cb4-22"></a></span>
-<span id="cb4-23"><a href="#cb4-23"></a></span>
-<span id="cb4-24"><a href="#cb4-24"></a>state2021 <span class="sc">%&gt;%</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a></span>
-<span id="cb4-26"><a href="#cb4-26"></a>  <span class="fu">filter</span>(state_name_2021 <span class="sc">==</span> state_name) <span class="sc">%&gt;%</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb4-28"><a href="#cb4-28"></a></span>
-<span id="cb4-29"><a href="#cb4-29"></a>  <span class="fu">geom_sf</span>(</span>
-<span id="cb4-30"><a href="#cb4-30"></a>    <span class="fu">aes</span>(<span class="at">geometry =</span> geometry),</span>
-<span id="cb4-31"><a href="#cb4-31"></a>    <span class="at">fill =</span> <span class="st">"#E5E4E2"</span></span>
-<span id="cb4-32"><a href="#cb4-32"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-33"><a href="#cb4-33"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb4-34"><a href="#cb4-34"></a>    <span class="at">data =</span> spatial_data,</span>
-<span id="cb4-35"><a href="#cb4-35"></a>    <span class="fu">aes</span>(</span>
-<span id="cb4-36"><a href="#cb4-36"></a>      <span class="at">x =</span> decimalLongitude,</span>
-<span id="cb4-37"><a href="#cb4-37"></a>      <span class="at">y =</span> decimalLatitude,</span>
-<span id="cb4-38"><a href="#cb4-38"></a>      <span class="at">size =</span> simpleName</span>
-<span id="cb4-39"><a href="#cb4-39"></a>    ),</span>
-<span id="cb4-40"><a href="#cb4-40"></a>    <span class="at">alpha =</span> <span class="fl">0.6</span>,</span>
-<span id="cb4-41"><a href="#cb4-41"></a>    <span class="at">colour =</span> <span class="st">"#1b9e77"</span></span>
-<span id="cb4-42"><a href="#cb4-42"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-43"><a href="#cb4-43"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb4-44"><a href="#cb4-44"></a>    <span class="at">data =</span> capital_cities_data,</span>
-<span id="cb4-45"><a href="#cb4-45"></a>    <span class="fu">aes</span>(</span>
-<span id="cb4-46"><a href="#cb4-46"></a>      <span class="at">x =</span> lon,</span>
-<span id="cb4-47"><a href="#cb4-47"></a>      <span class="at">y =</span> lat,</span>
-<span id="cb4-48"><a href="#cb4-48"></a>      <span class="at">shape =</span> city</span>
-<span id="cb4-49"><a href="#cb4-49"></a>    ),</span>
-<span id="cb4-50"><a href="#cb4-50"></a>    <span class="at">colour =</span> <span class="st">"#d95f02"</span>,</span>
-<span id="cb4-51"><a href="#cb4-51"></a>    <span class="at">size =</span> <span class="dv">4</span></span>
-<span id="cb4-52"><a href="#cb4-52"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-53"><a href="#cb4-53"></a>  <span class="fu">coord_sf</span>() <span class="sc">+</span></span>
-<span id="cb4-54"><a href="#cb4-54"></a></span>
-<span id="cb4-55"><a href="#cb4-55"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb4-56"><a href="#cb4-56"></a></span>
-<span id="cb4-57"><a href="#cb4-57"></a>  <span class="co"># Ref [1]</span></span>
-<span id="cb4-58"><a href="#cb4-58"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-59"><a href="#cb4-59"></a>    <span class="at">title =</span> <span class="fu">bquote</span>(<span class="st">"There are"</span> <span class="sc">~</span></span>
-<span id="cb4-60"><a href="#cb4-60"></a>                     <span class="fu">bold</span>(.({</span>
-<span id="cb4-61"><a href="#cb4-61"></a>                       spatial_data <span class="sc">%&gt;%</span></span>
-<span id="cb4-62"><a href="#cb4-62"></a>                         <span class="fu">nrow</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-63"><a href="#cb4-63"></a>                         <span class="fu">comma</span>()</span>
-<span id="cb4-64"><a href="#cb4-64"></a>                     })) <span class="sc">~</span></span>
-<span id="cb4-65"><a href="#cb4-65"></a>                     <span class="st">"records:"</span>),</span>
-<span id="cb4-66"><a href="#cb4-66"></a>    <span class="at">subtitle =</span> <span class="fu">bquote</span>(<span class="fu">bold</span>(.(</span>
-<span id="cb4-67"><a href="#cb4-67"></a>      species_simple_name</span>
-<span id="cb4-68"><a href="#cb4-68"></a>    )) <span class="sc">~</span></span>
-<span id="cb4-69"><a href="#cb4-69"></a>      <span class="st">"in"</span> <span class="sc">~</span></span>
-<span id="cb4-70"><a href="#cb4-70"></a>      <span class="fu">bold</span>(.(state_name))),</span>
-<span id="cb4-71"><a href="#cb4-71"></a>    <span class="at">shape =</span> <span class="st">"Capital City"</span>,</span>
-<span id="cb4-72"><a href="#cb4-72"></a>    <span class="at">size =</span> <span class="st">"Invasive Species"</span></span>
-<span id="cb4-73"><a href="#cb4-73"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-74"><a href="#cb4-74"></a>  <span class="fu">theme</span>(</span>
-<span id="cb4-75"><a href="#cb4-75"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-76"><a href="#cb4-76"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-77"><a href="#cb4-77"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-78"><a href="#cb4-78"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-79"><a href="#cb4-79"></a></span>
-<span id="cb4-80"><a href="#cb4-80"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>),</span>
-<span id="cb4-81"><a href="#cb4-81"></a></span>
-<span id="cb4-82"><a href="#cb4-82"></a>    <span class="co"># Ref [2]: Improve readability</span></span>
-<span id="cb4-83"><a href="#cb4-83"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb4-84"><a href="#cb4-84"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb4-85"><a href="#cb4-85"></a>      <span class="at">size =</span> <span class="dv">12</span>,</span>
-<span id="cb4-86"><a href="#cb4-86"></a>      <span class="at">face =</span> <span class="st">"bold"</span></span>
-<span id="cb4-87"><a href="#cb4-87"></a>    ),</span>
-<span id="cb4-88"><a href="#cb4-88"></a>    <span class="at">legend.direction =</span> <span class="st">"vertical"</span>,</span>
-<span id="cb4-89"><a href="#cb4-89"></a>    <span class="at">legend.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb4-90"><a href="#cb4-90"></a>      <span class="at">fill =</span> <span class="st">"#E5E4E2"</span>,</span>
-<span id="cb4-91"><a href="#cb4-91"></a>      <span class="at">colour =</span> <span class="st">"#708090"</span></span>
-<span id="cb4-92"><a href="#cb4-92"></a>    ),</span>
-<span id="cb4-93"><a href="#cb4-93"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
-<span id="cb4-94"><a href="#cb4-94"></a>    <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="st">"right"</span>, <span class="st">"bottom"</span>),</span>
-<span id="cb4-95"><a href="#cb4-95"></a>    <span class="at">legend.box.just =</span> <span class="st">"right"</span>,</span>
-<span id="cb4-96"><a href="#cb4-96"></a>    <span class="at">legend.margin =</span> <span class="fu">margin</span>(<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>),</span>
-<span id="cb4-97"><a href="#cb4-97"></a></span>
-<span id="cb4-98"><a href="#cb4-98"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">colour =</span> <span class="st">"transparent"</span>)</span>
-<span id="cb4-99"><a href="#cb4-99"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span>
+<span><span class="va">species_simple_name</span> <span class="op">&lt;-</span> <span class="st">"European Rabbits"</span></span>
+<span><span class="va">state_name</span> <span class="op">&lt;-</span> <span class="st">"Australian Capital Territory"</span></span>
+<span></span>
+<span></span>
+<span><span class="va">dashboard_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"processed_data/dashboard_data.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">spatial_data</span> <span class="op">&lt;-</span> <span class="va">dashboard_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
+<span>    <span class="va">simpleName</span> <span class="op">==</span> <span class="va">species_simple_name</span>,</span>
+<span>    <span class="va">state</span>      <span class="op">==</span> <span class="va">state_name</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="va">capital_cities_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<span>  <span class="op">~</span><span class="va">state</span>,                         <span class="op">~</span><span class="va">city</span>,       <span class="op">~</span><span class="va">lat</span>,     <span class="op">~</span><span class="va">lon</span>,</span>
+<span>  <span class="st">"Australian Capital Territory"</span>, <span class="st">"Canberra"</span>,  <span class="op">-</span><span class="fl">35.2809</span>, <span class="fl">149.1300</span>,</span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">state</span> <span class="op">==</span> <span class="va">state_name</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="va">state2021</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">state_name_2021</span> <span class="op">==</span> <span class="va">state_name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>geometry <span class="op">=</span> <span class="va">geometry</span><span class="op">)</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"#E5E4E2"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">spatial_data</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">decimalLongitude</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">decimalLatitude</span>,</span>
+<span>      size <span class="op">=</span> <span class="va">simpleName</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>    colour <span class="op">=</span> <span class="st">"#1b9e77"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="va">capital_cities_data</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">lon</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">lat</span>,</span>
+<span>      shape <span class="op">=</span> <span class="va">city</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    colour <span class="op">=</span> <span class="st">"#d95f02"</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">4</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span></span>
+<span>  <span class="co"># Ref [1]</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="st">"There are"</span> <span class="op">~</span></span>
+<span>                     <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="op">{</span></span>
+<span>                       <span class="va">spatial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                         <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>                         <span class="fu"><a href="https://scales.r-lib.org/reference/comma.html">comma</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>                     <span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
+<span>                     <span class="st">"records:"</span><span class="op">)</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span></span>
+<span>      <span class="va">species_simple_name</span></span>
+<span>    <span class="op">)</span><span class="op">)</span> <span class="op">~</span></span>
+<span>      <span class="st">"in"</span> <span class="op">~</span></span>
+<span>      <span class="fu">bold</span><span class="op">(</span><span class="fu">.</span><span class="op">(</span><span class="va">state_name</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    shape <span class="op">=</span> <span class="st">"Capital City"</span>,</span>
+<span>    size <span class="op">=</span> <span class="st">"Invasive Species"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.ticks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span></span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">13</span><span class="op">)</span>,</span>
+<span></span>
+<span>    <span class="co"># Ref [2]: Improve readability</span></span>
+<span>    legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
+<span>    legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
+<span>      size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    legend.direction <span class="op">=</span> <span class="st">"vertical"</span>,</span>
+<span>    legend.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span></span>
+<span>      fill <span class="op">=</span> <span class="st">"#E5E4E2"</span>,</span>
+<span>      colour <span class="op">=</span> <span class="st">"#708090"</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    legend.position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span>,</span>
+<span>    legend.box.just <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    legend.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">6</span>, <span class="fl">6</span><span class="op">)</span>,</span>
+<span></span>
+<span>    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"transparent"</span>, colour <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># References:</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># 1: https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># 2: https://r-graph-gallery.com/239-custom-layout-legend-ggplot2.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># References:</span></span>
+<span><span class="co"># 1: https://labs.ala.org.au/posts/2023-05-16_dingoes/post.html</span></span>
+<span><span class="co"># 2: https://r-graph-gallery.com/239-custom-layout-legend-ggplot2.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Each green point represents one record. We can see that the majority of records are near Canberra with some patterns in Namadgi National Park, like Boboyan Road. Let’s visualise some more maps.</p>
 </section><section id="temporal-visualisation" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="temporal-visualisation">Temporal Visualisation</h3>
