@@ -4,14 +4,14 @@
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Here are some of my completed, active, and archived (ideas that didn’t fruition) projects:"
+    "text": "Here are some of my completed, “active”, and archived (ideas that didn’t fruition) projects. This is a pseudo-checklist for my future self to remind myself of all the extra features / ideas that I had at the time."
   },
   {
     "objectID": "projects/index.html#invasive-species-rshiny-dashboard",
     "href": "projects/index.html#invasive-species-rshiny-dashboard",
     "title": "Projects",
     "section": "Invasive Species RShiny Dashboard",
-    "text": "Invasive Species RShiny Dashboard\n\nPurpose:\nThis project is complete. The dashboard is currently hosted on shinyapps.io. The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.\n\n\nProject Scope:\nThis project was the final assignment for the Data Science for Biologists (DS4B) university course.\nThe project had the following brief: Your task is to:\n\nchoose a dataset or combination of datasets\ndevelop some questions/aims related to that dataset, including appropriate background research\nuse R to address those questions/aims\nwrite your findings into a report of up to 2000 words and 10 figures\nsummarise your findings in a poster which you will present in the week 12 workshop\n\nIdeally, you should choose a combination of dataset and questions/aims that are interesting to you, because the more interesting you find it, the better your work will be!\n\n\nLinks:\n\nRShiny Dashboard\nPoster\nGitHub Repository"
+    "text": "Invasive Species RShiny Dashboard\n\nPurpose:\nThis project is complete. The dashboard is currently hosted on shinyapps.io. Whilst the dashboard is in a production state, there are still many improvements I would like to make. The dashboard has been shared with the Atlas of Living Australia and promoted on their website.\n\n\nProject Scope:\nThis project was the final assignment for the Data Science for Biologists (DS4B) university course.\nThe project had the following brief: Your task is to:\n\nchoose a dataset or combination of datasets\ndevelop some questions/aims related to that dataset, including appropriate background research\nuse R to address those questions/aims\nwrite your findings into a report of up to 2000 words and 10 figures\nsummarise your findings in a poster which you will present in the week 12 workshop\n\nIdeally, you should choose a combination of dataset and questions/aims that are interesting to you, because the more interesting you find it, the better your work will be!\n\n\nLinks:\n\nRShiny Dashboard\nPoster\nGitHub Repository"
   },
   {
     "objectID": "projects/index.html#spotify-exploratory-data-analysis",

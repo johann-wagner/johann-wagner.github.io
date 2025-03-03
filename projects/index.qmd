@@ -6,14 +6,14 @@ toc-location: left
 title-block-banner: true
 ---
 
-Here are some of my completed, active, and archived (ideas that didn't fruition) projects:
+Here are some of my completed, "active", and archived (ideas that didn't fruition) projects. This is a pseudo-checklist for my future self to remind myself of all the extra features / ideas that I had at the time.
 
 # Completed Projects
 
 ## Invasive Species RShiny Dashboard
 
 #### Purpose:
-This project is complete. The dashboard is currently hosted on [shinyapps.io](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/). The dashboard is still in the early stages of development and there are still many improvements to be made. The next step is to incorporate the dashboard into this website and share this work with the Atlas of Living Australia.
+This project is complete. The dashboard is currently hosted on [shinyapps.io](https://0uexv8-johann-wagner.shinyapps.io/invasive_species_dashboard/). Whilst the dashboard is in a production state, there are still many improvements I would like to make. The dashboard has been shared with the Atlas of Living Australia and promoted on their website.
 
 #### Project Scope:
 
