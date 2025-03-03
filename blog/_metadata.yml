@@ -14,10 +14,7 @@ title-block-banner: false
 lang: en
 
 # Code
-code-fold: show
-code-line-numbers: true
 code-copy: true
-code-link: true
 
 # Appendix
 license: "CC0 1.0 Universal"
