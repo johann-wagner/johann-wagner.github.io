@@ -3,12 +3,15 @@ title: "Bikepacking - Attack of the Buns"
 description: "A hot 4-day adventure through Morton National Park"
 author: "Johann Wagner"
 date: "2025-03-15"
+format:
+  html:
+    highlight: pygments
 categories:
   - "Bikepacking"
   - "Adventure"
 ---
 
-Attack of the Buns.... Or perhaps rather Attack of the Braids, because instead of a Bungendore start we began the adventure from Braidwood. [Add more table of contents vibes]
+Attack of the Buns.... Or perhaps rather Attack of the Braids, because instead of a Bungendore start we began the adventure from Braidwood. This blog post is all about my recent bikepacking trip in early 2025. We started in Bungendore travelling through Morton National Park past Nowra and Kangaroo Valley finishing in Moss Vale.
 
 Day 0: Car Logistics
 The trip began after work on a Wednesday afternoon. The idea was Robin and I would drive separately from Canberra to Moss Vale. We would then "scissors, paper, rock" to determine who's car would be left in Moss Vale. Then we would grab Subway and head back home to Canberra. With our bikes and gear now all packed in the car, it was time for an early nights sleep.
