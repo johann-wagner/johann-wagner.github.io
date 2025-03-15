@@ -22,11 +22,11 @@ website:
       - text: "Home"
         href: index.qmd
 
-      - text: "Projects"
-        href: projects/index.qmd
-
       - text: "Blog"
         href: blog/index.qmd
+
+      - text: "Projects"
+        href: projects/index.qmd
 
       - text: "CV"
         href: cv/index.qmd
