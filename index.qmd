@@ -65,7 +65,7 @@ I'm a Data Scientist working at [Jobs and Skills Australia](https://www.jobsands
 ---
 
 ##### ✅ Moving Forward:
-- I'm **always keen to chat** about all things data, R programming, and open science. I'm also a big fan of open source software and the R programming language. 🌱🎓
+- **Always keen to chat** about all things data, R programming, and open source software. I'm also a big fan of [open science](https://www.unesco.org/en/open-science). 🌱🎓
 - **Shoot me a message on LinkedIn or via email** or any other method you prefer! 🤓
 
 ---
@@ -73,10 +73,10 @@ I'm a Data Scientist working at [Jobs and Skills Australia](https://www.jobsands
 ##### 🔗 Links:
 Here are some useful links you might be interested in:
 
-- 💼 [My CV](cv/index.qmd)
-- 📊 [My Data Projects](projects/index.qmd)
-- ✏️ [My Blog](blog/index.qmd)
-- 🤓 [My GitHub](https://github.com/johann-wagner)
+- 💼 [CV](cv/index.qmd)
+- 📊 [Data Projects](projects/index.qmd)
+- ✏️ [Blog](blog/index.qmd)
+- 🤓 [GitHub](https://github.com/johann-wagner)
 
 ---
 
