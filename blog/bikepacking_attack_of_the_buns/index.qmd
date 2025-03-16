@@ -13,6 +13,8 @@ categories:
 
 [Attack of the Buns](https://bikepacking.com/routes/attack-of-the-buns/).... Or perhaps this blog post should be called Attack of the Braids, because we began the adventure from Braidwood, instead of the usual start in Bungendore. This blog post is all about my recent bikepacking trip in early 2025. We started in Bungendore travelling through Morton National Park past Nowra and Kangaroo Valley finishing in Moss Vale.
 
+![From Braidwood to Nerriga](photos/day1/braidwood_nerriga_sign.jpg){fig-align="center"}
+
 ## Day 0: Car Logistics
 The trip "began" after work on a Wednesday afternoon. The plan was for Robin and I to drive separately from Canberra to Moss Vale. We would then *"scissors, paper, rock"* to determine whose car would be left in Moss Vale, then grab Subway and back home. With our bikes and gear now all packed in the car, it was time for an early nights sleep.
 
@@ -21,9 +23,20 @@ The plan from here would be to drive to Braidwood, then cycle across 4 days back
 ## Day 1: Braidwood to Piercys Clearing
 
 ### The Bike Pump...
+
+::: {.callout-note}
 Today was the first day where (almost) everything went to plan - unfortunately a rariety in my bikepacking career so far.
+:::
 
 Awake and ready to start the day, we would make our way straight to [Braidwood Bakery](https://braidwoodbakery.com.au/)[^1]. The bikes and bags are now fully setup and we've taken our first of many 10 second self-timer photos. Robin wants to quickly pump up his tires before we hit the gravel. To our surprise, I realise that I had forgotten to bring the valve adaptor for our pump[^2].
+
+::: {layout="[[1,1], [1]]"}
+![Playing bike tetris](photos/day1/car_logistics.jpg)
+
+![Braidwood Bakery](photos/day1/braidwood_bakery.jpg)
+
+![Compulsory start photo](photos/day1/start_photo.jpg)
+:::
 
 [^1]: Braidwood Bakery is such a local classic for any Canberrans heading to the coast for the weekend.
 
@@ -38,12 +51,28 @@ In a worried manner, we push our bikes through town asking shopkeepers if they s
 
 We strap it onto my front handle bars with some spare straps I brought (a reminder to always bring some spare straps!).
 
+::: {layout="[1,1]"}
+![Bike pump acquired](photos/day1/bike_pump.jpg)
+
+![Thank you, Braidwood Mitre 10](photos/day1/robin_cycling.jpg)
+:::
+
 ### Pumped up, let's go, off to Nerriga Pub!
 And off we go having already problem solved, we jump onto Little River Road leading onto Charleys Forest Road off to Nerriga. The gravel was smooth and slightly undulating. Complimented by a cool misty morning, we were flying past grazing cattle, calm creek crossings, and a peaceful snake enjoying the warm road! 
+
+![POV: Robin taking a photo of the snake](photos/day1/snake.jpg)
 
 With the sun starting to break through the clouds, arriving at Nerriga was a lifesaver from the incoming onslaught of the heat. Excited to down a celebratory pint of Carlton Draught and a pub feed, we were greeted by two confused looking locals joking they would have preferred taking their motorbikes instead of bicycles. I followed with a slight nod and a chuckle, as I gazed over to see another bikepacker enjoying the shade. Not able to wait any longer, I rush inside to see a bustling pub full of elderly people enjoying their meals. I order the pub burger and my pint and head outside curious to hear where the other bikepacker had come from. 
 
 Lachie had the full bike setup, a bunch of bike bags, mountain bike cleets, thick tires, and even some tri bars. I knew I was just about to meet an expert in the field. Offering a seat to his table, we had lunch with him finding out he had just come from Gerringong via the same route we had planned - only to realise his final destination was not Braidwood, but in fact Tasmania.... After exchanging stories and advice, Robin and I left for our afternoon session.
+
+::: {layout="[[1,1], [1]]"}
+![Highly recommend the pub burger](photos/day1/nerriga_burger.jpg)
+
+![Inside Nerriga Hotel](photos/day1/nerriga_pub.jpg)
+
+![Ready for the afternoon cycle](photos/day1/ned_kelly.jpg)
+:::
 
 ### Endrick River swim
 Back on gravel, we came across Endrick River, a lovely swimming spot by a small shady forde. Perfect timing, plenty of daytime to spare, so a quick dip was so refreshing! Drying off, we're back on the bikes cycling through Morton National Park overlooking some impressive cliff faces following the Red Ground Track[^3]. After a small mishaps in navigation[^4], we arrived at Piercy's Clearing about 100m from a smaller estuary of Endrick River. Another quick rinse off followed by some Backcountry freeze-dried Satay Chicken and some much needed stretching, we were ready for sleep.
@@ -52,23 +81,36 @@ Back on gravel, we came across Endrick River, a lovely swimming spot by a small 
 
 [^4]: Note to self: Always double-check the map, especially after a 35°C day of cycling 🥵
 
+::: {layout="[[1, 1], [1, 1]]"}
+![Endrick River Swim](photos/day1/endrick_river.jpg)
+
+![Piercy's Clearing](photos/day1/piercys_clearing.jpg)
+
+![Can never have enough 'bike leaning against stuff' photos](photos/day1/cliff_tops.jpg)
+
+![Cliffs in the distance](photos/day1/robin_riding.jpg)
+:::
+
 ### Some night time reflection
 Laying on my mat resting my head against my rolled up sleeping bag. The current sleeping arrangements are a cosy 1-person tent with a luxuriously large Sea to Summit sleeping mat. Planning on using my sleeping bag liner and keeping the bag packed up given the a warm-ish night. I reflect through photos and videos of the day feeling my joints relax and recover after a warm days ride.
 
-Listening to the rustling shoulders against the mat searching for the optimal position, I finally get comfortable and wrap myself in the liner. Immediately, I feel the merino radiating keeping me warm and snug and slowly close my eyes to the whispers of crickets and creaking nocturnal animals in the distance. Hopefully I still have all my food in the morning! Good night 😴
+Listening to the rustling shoulders against the mat searching for the optimal position, I finally get comfortable and wrap myself in the liner. Immediately, I feel the merino radiating keeping me warm and snug and slowly close my eyes to the whispers of crickets and creaking nocturnal animals in the distance. Hopefully I still have all my food in the morning!
+
+![Good night 😴](photos/day1/sunset.jpg)
 
 ## Day 2: Piercy's Clearing to Nowra
-sweating profusely, and motel magic
-
 Breakfast is always a struggle! Consistent food intake is so so important when it comes to endurance events. So when I know there's a long, sunny day ahead, I'll *attempt* to eat as much as I can for breakfast and essentially every other meal of the day.
 
-Today's planned menu: 
+::: {.callout-note}
+### Today's planned menu: 
 
 * Breakfast (at Piercy's Clearing): Porridge, nutella, salami, hazelnut coffee 
 * Lunch (at Yalwal): Backcountry Moroccan Lamb
 * Dinner (in Nowra): Pizza, Bundaberg Guava
 * Dessert (at the motel): Maxibon, chocie milk
 * Snacks (constantly): Peanut M&Ms, salted nuts, soya Crisps, Gu gels[^5], powerade
+
+:::
 
 [^5]: Big fan of the flavourless Nude "flavour". Strawberry and Banana & Birthday Cake are pretty good too. I prefer thicker gels, so Gu works well for me.
 
@@ -77,11 +119,48 @@ Today's first few kilometres are met with large rocky sections making a very slo
 
 [^6]: We met another bikepacker racing in the [Sydney to Summit](https://sydneytosummit.com/) race, who greeted us with "welcome to hell", as he was flowing down the mountain. I think he was in a lot of pain, the kind of pain that is felt once you're truly past type 2 fun. I think I found his Strava after the trip; he made it to Kosciuszko.
 
-Back into action, we get back onto tarmac for a sweet 75km/h+ speedy descent down Braidwood Road[^7] shortly after jumping back onto the gravel following Yarramunmun Firetrail. Now we had switched from rocky technicals to the sandy downhills, from one technical to the next. Whilst the downhill was appreciated, the heat reflecting off the white-beige sand radiated for what felt for a few monotonous hours. Thankfully, after an incredibly steep descent[^8], we finally made it into Yalwal, a camping green space next to one of several dams around the Shoalhaven region. Seeking out shelter from the blistering sun, we spent over 2 hours eating, playing cards, attempting to rehydrate and recover in preparation for a big climb out of the basin. After a backcountry, way too many M&Ms, several chugs of my warm Powerade, we were as ready as could be for the climb.
+::: {layout="[[1,1], [1,1]]"}
+
+::: {.cell}
+![I've really enjoyed having Cucumbers on long rides, it's like solid water that doesn't melt or get overly warm](photos/day2/cucumber.jpg)
+:::
+
+::: {.cell}
+![The rocks from hell](photos/day2/rocky_terrain.jpg)
+:::
+
+::: {.cell}
+![Morton National Park - The Vines](photos/day2/the_vines.jpg)
+:::
+
+::: {.cell}
+![How cool is epicormic growth - resprouting eucalypts after bushfire damage](photos/day2/epicormic_growth.jpg)
+:::
+
+:::
+
+Back into action, we get back onto tarmac for a sweet 75km/h+ speedy descent down Braidwood Road[^7] shortly after jumping back onto the gravel following Yarramunmun Firetrail. Now we had switched from rocky technicals to the sandy downhills, from one technical to the next. Whilst the downhill was appreciated, the heat reflecting off the white-beige sand radiated for what felt for a few monotonous hours.
+
+Thankfully, after an incredibly steep descent[^8], we finally made it into Yalwal, a camping green space next to one of several dams around the Shoalhaven region. Seeking out shelter from the blistering sun, we spent over 2 hours eating, playing cards, attempting to rehydrate and recover in preparation for a big climb out of the basin. After a backcountry, way too many M&Ms, several chugs of my warm Powerade, we were as ready as could be for the climb.
 
 [^7]: Going fast is just such a thrill, but wow it's also just so so dangerous.
 
 [^8]: I can't believe there are some people that opted to do Attack of the Buns the opposite direction and would have to climb up that section, absolutely bonkers.
+
+::: {layout="[[1,1], [1]]" layout-valign="bottom"}
+
+::: {.cell}
+![Morton National Park - The Vines](photos/day2/backcountry.jpg)
+:::
+
+::: {.cell}
+![Moo!](photos/day2/cow.jpg)
+:::
+
+::: {.cell}
+![Morton National Park - The Vines](photos/day2/recovery_swim.jpg)
+:::
+:::
 
 ### The Fun Scale - "this is fun, that was fun, that sucked"
 Powering up a mountain is a mental game, a tug of war between pushing through the lactic acid buildup or stopping and catching a break in the shade. The latter is promising, but the ego says otherwise. At some point, the body gets used to the pain, sometimes even reaching the nirvana-state of type 2 fun - miserable in the moment, but awesome in retrospect. Thoughts slowly get filled with echoes of doubt, but also reminders of triumph and motivation[^9]. The grit comes out and you power through sometimes even zoning out or perhaps it's actually zoning in; into a state of mind where the only objective is "push" and hope you don't end up in type 3 fun[^10]. Enough talk about the fun scale, back to the day. 
@@ -90,9 +169,17 @@ Powering up a mountain is a mental game, a tug of war between pushing through th
 
 [^10]: Type 1 fun is fun in the moment and in retrospect. Type 2 fun is **not** fun in the moment, but fun in retrospect (this is probably the most prominent feeling for long-distance runners). Finally, type 3 fun is **not** fun in the moment **and** also **not** fun in retrospect - "it just sucks".
 
-Making it up to the top, I see a sun-protected area, whip out my luxury-item - [foldable cushioned mats](https://www.amazon.com.au/Folding-Waterproof-Sitting-Camping-Foldable/dp/B0D49Y3CC4/) - sit back and enjoy the last drops of my lukewarm powerade. I'm running low on snacks, I'm excited for Nowra. Robin and I enjoy some more shade listening to our nostalgic 2010s (arguably emo/edm phase) music [^11], hop on the saddle heading east to Nowra. 
+Making it up to the top, I see a sun-protected area, whip out my luxury-item - [foldable cushioned mats](https://www.amazon.com.au/Folding-Waterproof-Sitting-Camping-Foldable/dp/B0D49Y3CC4/) - sit back and enjoy the last drops of my lukewarm powerade. I'm running low on snacks, I'm excited for Nowra. Robin and I enjoy some more shade listening to our nostalgic 2010s (arguably emo/edm phase) music, hop on the saddle heading east to Nowra. 
 
-[^11]: Lots of Linkin Park
+::: {layout="[[1,1]]" layout-valign="bottom"}
+
+:::{.cell}
+![Made it to the top](photos/day2/top.jpg)
+:::
+:::{.cell}
+![Profusely sweating](photos/day2/sweating.jpg)
+:::
+:::
 
 ### How good is Chocie Milk ❤️
 Getting back into a busy town, especially over the summer weekend, was a little bit of a shock. So much stopping and starting. We get into Nowra CBD and I propose to Robbie, that I quickly run into Coles to grab a 2L Oak chocie milk... Best decision. I had about a whole liter within a few minutes.
@@ -102,3 +189,27 @@ Getting to the motel made me really appreciate all the common household services
 [^12]: As someone who's only recently gotten into camping, this must be a common experience to those more experienced, but alas a nice personal appreciation.
 
 We finished off the day with some local woodfired pizzas and restocking on snacks at Coles. Returning to the aircon-chilled room and covering up under blankets was a lovely change (can't believe I appreciated this so much given it was only one night of camping eeeep).
+
+::: {layout="[[1,1]]"}
+:::{.cell}
+![Chocie Milk!](photos/day2/chocie_milk.jpg)
+:::
+:::{.cell}
+![Dinner](photos/day2/dinner.jpg)
+:::
+:::
+
+## Day 3: Nowra to Griffin's Farm Campground
+
+
+## Day 4: Griffin's Farm Campground to Moss Vale to Home
+
+## Appendix Photos
+
+These are the photos that didn't make it...
+
+![Mailboxes between Braidwood and Nerriga](photos/appendix/mailboxes.jpg)
+
+![Cow](photos/appendix/cow.jpg)
+
+![Burnt Banksia](photos/appendix/banksia.jpg)
