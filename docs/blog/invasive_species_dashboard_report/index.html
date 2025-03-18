@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 </head>
-<body class="floating nav-fixed slimcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
@@ -552,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let’s spatially showcase the data.</p>
 <p>Interestingly, it seems that there are a few observations that are to the east of the NSW border, which is likely an island part of NSW (Lord Howe Island!).</p>
 </section><section id="addressing-the-questionsaims" class="level1 page-columns page-full"><h1>Addressing the questions/aims</h1>
-<section id="aim-1-dashboard-and-visualisations" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="aim-1-dashboard-and-visualisations">Aim 1: Dashboard and Visualisations</h2>
+<section id="aim-1-dashboard-and-visualisations" class="level2"><h2 class="anchored" data-anchor-id="aim-1-dashboard-and-visualisations">Aim 1: Dashboard and Visualisations</h2>
 <section id="folder-system" class="level3"><h3 class="anchored" data-anchor-id="folder-system">Folder System</h3>
 <p>The RShiny app can be found in the GitHub folder <a href="https://github.com/johann-wagner/DS4B-final-project/tree/main/invasive_species_dashboard"><em>DS4B-final-project/invasive_species_dashboard</em></a>. Similar to R Project environments, the RShiny app is all self-contained in this folder. The individual R scripts in the <a href="https://github.com/johann-wagner/DS4B-final-project/tree/main/scripts"><em>DS4B-final-project/scripts</em></a> folder must be run first to produce and save the dashboard data within the RShiny folder for most recent data.</p>
 </section><section id="the-rshiny-app" class="level3"><h3 class="anchored" data-anchor-id="the-rshiny-app">The RShiny App</h3>
@@ -675,16 +675,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># 2: https://r-graph-gallery.com/239-custom-layout-legend-ggplot2.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Each green point represents one record. We can see that the majority of records are near Canberra with some patterns in Namadgi National Park, like Boboyan Road. Let’s visualise some more maps.</p>
-</section><section id="temporal-visualisation" class="level3 page-columns page-full"><h3 class="anchored" data-anchor-id="temporal-visualisation">Temporal Visualisation</h3>
+</section><section id="temporal-visualisation" class="level3"><h3 class="anchored" data-anchor-id="temporal-visualisation">Temporal Visualisation</h3>
 <p>The aim of creating a circular monthly bar plot of record proportions was to explore potential temporal patterns. This plot suggests two things:</p>
 <ol type="1">
 <li><p>The time frequency when citizen scientists submit data and/or when professional/government teams measure/monitor invasive species. Maybe, annual monitoring occurs in May?</p></li>
 <li><p>The actual temporal species distribution. For example, maybe there are more cats in May in SA, because of reproduction behaviour?</p></li>
 </ol>
 <p>Let’s create it for Feral Cats in South Australia (A screenshot was used, see GitHub for code - this blog post is already so long…).</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full"><p><img src="screenshots/temporal_feral_cats_south_australia.png" class="img-fluid figure-img"></p>
-<figcaption class="margin-caption">Temporal Feral Cats in SA</figcaption></figure>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="screenshots/temporal_feral_cats_south_australia.png" class="img-fluid figure-img"></p>
+<figcaption>Temporal Feral Cats in SA</figcaption></figure>
 </div>
 </section></section><section id="aim-2-regionality" class="level2"><h2 class="anchored" data-anchor-id="aim-2-regionality">Aim 2: Regionality</h2>
 <p>This aim was completely abandoned, because of the scope of the project was getting too big. However, adding the capital city point highlights how majority of the selected species cluster around the capital city. Additionally, a zoom function was added to the Shiny app for users to zoom into specific patterns and areas of interest.</p>
