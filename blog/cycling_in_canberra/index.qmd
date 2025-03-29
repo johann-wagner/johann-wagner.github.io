@@ -102,12 +102,14 @@ clean_bike_data <- raw_bike_data |>
       !date_time,
       as.integer
     )
-  )
+  ) |> 
+  # Avoid confusion with the count function
+  rename(cyclist_count = count)
 clean_bike_data
 ```
 
 ### Sanity Checks - Clean Data
-Now, that the data is cleaned we can do some more sanity checks. The average number of cyclists passing through the Macarthur Avenue crossing is `r mean(clean_bike_data$count)`. However, there is quite a right-skewed distribution (mostly low counts by the hour). Interestingly, there's a slightly more cyclists heading into the city than out of the city. Our dataset ranges between `r min(clean_bike_data$date_time) |> ymd()` and `r min(clean_bike_data$date_time) |> ymd()`.
+Now, that the data is cleaned we can do some more sanity checks. The average number of cyclists passing through the Macarthur Avenue crossing is `r mean(clean_bike_data$cyclist_count)`. However, there is quite a right-skewed distribution (mostly low counts by the hour). Interestingly, there's a slightly more cyclists heading into the city than out of the city. Our dataset ranges between `r min(clean_bike_data$date_time) |> ymd()` and `r min(clean_bike_data$date_time) |> ymd()`.
 
 ```{r}
 skim(clean_bike_data)
@@ -116,11 +118,138 @@ skim(clean_bike_data)
 ## Time series
 Let's see how the number of bikes changes across time.
 ```{r}
-clean_bike_data
+clean_bike_data |> 
+  ggplot(aes(
+    x = date_time,
+    y = cyclist_count
+  )) +
+  geom_point() +
+  theme_minimal()
+```
+
+Wow, what an ugly plot! It seems like the hourly data (presumably at night) is resulting in all of these low values. Let's create a histogram to highlight the right-skewed distribution of the `cyclist_count` variable and then aggregate to daily data and plot again.
+
+```{r}
+clean_bike_data |> 
+  ggplot(aes(
+    x = cyclist_count
+  )) +
+  geom_histogram(
+    bins = 60
+  ) +
+  theme_minimal()
+```
+The plot below shows the daily cyclist count. Again it's still quite confusing with a wide range of values.
+```{r}
+daily_cyclist_count <- clean_bike_data |> 
+  mutate(
+    date = as_date(date_time)
+  ) |> 
+  group_by(date) |> 
+  summarise(
+    across(
+      where(is.numeric),
+      sum
+    ),
+    .groups = "drop"
+  ) |> 
+  ggplot(aes(
+    x = date,
+    y = cyclist_count
+  )) +
+  geom_point() +
+  labs(
+    title = "Cyclist Count by Date",
+    x = "Date",
+    y = "Cyclist Count",
+  ) +
+  theme_minimal()
+daily_cyclist_count
 ```
 
 ## Days of the week
+Let's take the same plot and add some colour indicating the day of the week. Now this paints a better picture, we've discovered that Canberrans are cycling less over the weekend. This also brings out the seasonality in the dataset (perhaps Summer and Spring). But we also can see the impacts of the COVID-19 lockdowns and potentially the aftermath of working from home policies.
+
+```{r}
+daily_cyclist_count_coloured <- daily_cyclist_count +
+  aes(colour = wday(date, label = TRUE)) +
+  scale_colour_viridis_d() +
+  labs(colour = "Day of Week") +
+  theme(legend.position = "bottom")
+daily_cyclist_count_coloured
+```
 
 ## Time of day
+We've focused on the days of the week, let's now visualise the time of day and also facet by day of the week.
+```{r}
+cyclist_count_by_hour <- clean_bike_data |> 
+  mutate(
+    hour = hour(date_time)
+  ) |> 
+  group_by(hour) |> 
+  summarise(
+    across(
+      where(is.numeric),
+      mean
+    ),
+    .groups = "drop"
+  ) |> 
+  ggplot(aes(
+    x = hour,
+    y = cyclist_count
+  )) +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "Average Cyclist Count by Hour",
+    x = "Hour of the Day (24 hour time)",
+    y = "Cyclist Count",
+  ) +
+  theme_minimal()
+cyclist_count_by_hour
+```
 
-## GitHub calendar
+Let's facet by day of the week.
+```{r}
+clean_bike_data_hourly_by_day_of_the_week <- clean_bike_data |>
+  mutate(
+    hour = hour(date_time),
+    day_of_week = date_time |> 
+      date() |> 
+      wday(week_start = 1, label = TRUE)
+  ) |>
+  group_by(hour, day_of_week) |>
+  summarise(
+    across(
+      where(is.numeric),
+      mean
+    ),
+    .groups = "drop"
+  )
+
+cyclist_count_by_hour_with_facet <- clean_bike_data_hourly_by_day_of_the_week |> 
+  ggplot(aes(
+    x = hour,
+    y = cyclist_count
+  )) +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "Average Cyclist Count by Hour, Faceted by Day of Week",
+    x = "Hour of the Day (24 hour time)",
+    y = "Cyclist Count"
+  ) +
+  theme_minimal() +
+  facet_wrap(~day_of_week)
+
+cyclist_count_by_hour_with_facet
+```
+
+Very interesting, as expected from the previous plots, weekends have less cyclists. We can see the morning work commutes during the week; however, there seems to be less commuters on Mondays and Fridays.
+
+## Resources used:
+
+* [ACT Bike Barometer - MacArthur Avenue](https://www.data.act.gov.au/Transport/ACT-Bike-Barometer-MacArthur-Avenue/62sb-92ea/about_data)
+* [Great video by Melissa Van Bussel (ggnot2) explaining how APIs work in R](https://www.youtube.com/watch?v=8tilyqp4bZY)
+* [Raelene analysed the same dataset (2018 - 2020)](https://rpubs.com/Raelene/828364)
+* [Helped me figure out what offset and limit parameters do](https://support.socrata.com/hc/en-us/articles/202949268-How-to-query-more-than-1000-rows-of-a-dataset)
