@@ -107,12 +107,17 @@ clean_bike_data
 ```
 
 ### Sanity Checks - Clean Data
-Now, that the data is cleaned we can do some more sanity checks.
+Now, that the data is cleaned we can do some more sanity checks. The average number of cyclists passing through the Macarthur Avenue crossing is `r mean(clean_bike_data$count)`. However, there is quite a right-skewed distribution (mostly low counts by the hour). Interestingly, there's a slightly more cyclists heading into the city than out of the city. Our dataset ranges between `r min(clean_bike_data$date_time) |> ymd()` and `r min(clean_bike_data$date_time) |> ymd()`.
+
 ```{r}
 skim(clean_bike_data)
 ```
 
 ## Time series
+Let's see how the number of bikes changes across time.
+```{r}
+clean_bike_data
+```
 
 ## Days of the week
 
