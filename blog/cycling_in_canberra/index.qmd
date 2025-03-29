@@ -3,6 +3,9 @@ title: "Cycling in Canberra 🚴"
 description: "Initial exploration into Canberra's cycling habits"
 author: "Johann Wagner"
 date: "2025-03-18"
+format:
+  html:
+    highlight: pygments
 categories:
   - "Exploratory Data Analysis"
   - "Cycling"
