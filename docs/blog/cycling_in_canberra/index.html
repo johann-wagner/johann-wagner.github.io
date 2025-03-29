@@ -6,7 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Johann Wagner">
 <meta name="dcterms.date" content="2025-03-18">
-<title>Cycling in Canberra – Johann Wagner</title>
+<meta name="description" content="Initial exploration into Canberra’s cycling habits">
+<title>Cycling in Canberra 🚴 – Johann Wagner</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 </head>
-<body class="floating nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
@@ -177,9 +178,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#sanity-checks---clean-data" id="toc-sanity-checks---clean-data" class="nav-link" data-scroll-target="#sanity-checks---clean-data">Sanity Checks - Clean Data</a></li>
   </ul>
 </li>
-  <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series">Time series</a></li>
-  <li><a href="#days-of-the-week" id="toc-days-of-the-week" class="nav-link" data-scroll-target="#days-of-the-week">Days of the week</a></li>
-  <li><a href="#time-of-day" id="toc-time-of-day" class="nav-link" data-scroll-target="#time-of-day">Time of day</a></li>
+  <li><a href="#initial-visualisation-explorations" id="toc-initial-visualisation-explorations" class="nav-link" data-scroll-target="#initial-visualisation-explorations">Initial visualisation explorations</a></li>
+  <li><a href="#canberrans-cycle-more-during-the-week" id="toc-canberrans-cycle-more-during-the-week" class="nav-link" data-scroll-target="#canberrans-cycle-more-during-the-week">Canberrans cycle more during the week</a></li>
+  <li><a href="#morning-and-afternoon-commutes" id="toc-morning-and-afternoon-commutes" class="nav-link" data-scroll-target="#morning-and-afternoon-commutes">Morning and Afternoon Commutes</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
   <li><a href="#resources-used" id="toc-resources-used" class="nav-link" data-scroll-target="#resources-used">Resources used:</a></li>
   </ul></nav>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
@@ -187,17 +189,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Cycling in Canberra</h1>
+<main class="content page-columns page-full column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Cycling in Canberra 🚴</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Exploratory Data Analysis</div>
     <div class="quarto-category">Cycling</div>
+    <div class="quarto-category">Canberra</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    Initial exploration into Canberra’s cycling habits
+  </div>
+</div>
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -220,53 +228,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><section id="context" class="level2"><h2 class="anchored" data-anchor-id="context">Context</h2>
 <section id="personal-interest" class="level3"><h3 class="anchored" data-anchor-id="personal-interest">Personal Interest</h3>
+<p>As an avid cyclist commuting to work to work as a data analyst, combining the two seems natural. This analysis is a personal exploration into the Canberra’s cycling habits, hopefully uncovering some patterns along the way.</p>
 </section><section id="data-context" class="level3"><h3 class="anchored" data-anchor-id="data-context">Data Context</h3>
-<p>This dataset contains the number of trips counted by the bike barometer located on the Sullivan’s Creek shared path at the intersection with MacArthur Avenue in O’Connor.</p>
+<p>This dataset contains the number of trips counted by the bike barometer located on the Sullivan’s Creek shared path at the intersection with MacArthur Avenue in O’Connor. Colloquially known as <em>Dickson Bike Path</em>, it is commonly used by commuters into Civic, university students heading to Campus in Acton, school students, and avid cyclists.</p>
 <p>The data is recorded in hourly intervals, and is collected using an induction loop similar to systems used for traffic light monitoring. Trips in both directions are included in the recorded counts.</p>
 </section></section><section id="setup-and-configuration" class="level2"><h2 class="anchored" data-anchor-id="setup-and-configuration">Setup and Configuration</h2>
+<p>Let’s begin by loading the neccessary R libraries.</p>
+</section><section id="data-loading-with-api" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="data-loading-with-api">Data Loading (with API)</h2>
+<p>Accessing the Canberra Bike Barometer data requires interacting with an API. However, the API’s default limit of 1000 rows necessitates a more strategic approach.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr2.r-lib.org">httr2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/skimr/">skimr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section><section id="data-loading-with-api" class="level2"><h2 class="anchored" data-anchor-id="data-loading-with-api">Data Loading (with API)</h2>
-<p>We’ll access the Canberra Bike Barometer data via an API.</p>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base_url</span> <span class="op">&lt;-</span> <span class="st">"https://www.data.act.gov.au/resource/62sb-92ea.json"</span></span>
-<span><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="va">base_url</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">resp</span> <span class="op">&lt;-</span> <span class="va">req</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">resp</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html">resp_body_json</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Unfortunately, the API service has a default limit of providing 1000 rows, so we will have to do some smart looping to ensure we get the complete dataset. We will set our limit parameter to 1000 and create a new function to make a GET API request.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">limit</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">base_url</span> <span class="op">&lt;-</span> <span class="st">"https://www.data.act.gov.au/resource/62sb-92ea.json"</span></span>
+<span><span class="va">limit</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span></span>
 <span><span class="va">get_data</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">offset</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">base_url</span>, <span class="st">"?$offset="</span>, <span class="va">offset</span>, <span class="st">"&amp;$limit="</span>, <span class="va">limit</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html">resp_body_json</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu">request</span><span class="op">(</span><span class="va">url</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">req_perform</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">resp_body_json</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now, we can create a <code>while</code> loop to fetch the data in chunks. We can increment the <code>offset</code> parameter in each iteration and store the fetched data in <code>raw_bike_data</code>.The <code>tryCatch</code> function is used to handle potential errors during the request. So long the http response code is 200, the loop will not break. If the response is empty <code>length(result) == 0</code>, it means there’s no more data and the loop will break.</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bike_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<p>To overcome this limitation, we can use a <code>while</code> loop that fetches data in chunks of 1000 rows. The <code>tryCatch</code> function handles potential API errors, ensuring a robust data retrieval process. So long the http response code is 200<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, the loop will not break. If the response is empty <code>length(result) == 0</code>, it means there’s no more data and the loop will break.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;When you see a 200 response, it signals that the data was retrieved without errors. The server has successfully processed our requests.</p></div></div><div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bike_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">offset</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span></span>
 <span><span class="kw">while</span> <span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span></span>
@@ -338,13 +321,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [1] "Offset: 46000"
 [1] "Offset: 47000"</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raw_bike_data</span> <span class="op">&lt;-</span> <span class="va">bike_data</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr</a></span><span class="op">(</span><span class="va">as_tibble</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raw_bike_data</span> <span class="op">&lt;-</span> <span class="va">bike_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">map_dfr</span><span class="op">(</span><span class="va">as_tibble</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="sanity-checks---raw-data" class="level3"><h3 class="anchored" data-anchor-id="sanity-checks---raw-data">Sanity Checks - Raw Data</h3>
-<p>Hurray! Let’s do some sanity checks / data quality checks.</p>
+<p>Hurray! Let’s do some sanity checks to assess the data quality.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">raw_bike_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">skim</span><span class="op">(</span><span class="va">raw_bike_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -450,23 +433,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>Great! It’s very reassuring to see 46200 unique <code>datetime</code> values. We’ll need to do some data cleaning and adjust <code>count</code>, <code>macarthur_ave_display_cyclist_in</code>, <code>macarthur_ave_display_cyclist_out</code> to be numeric values. Nevertheless, we can see that the min and max values are presumably between 0 and at most 999, which seems reasonable for hourly bike counts. We’ve also got no missing/empty values.</p>
-<p>The great thing about the above code is that hopefully it remains reproducible once ACT Government releases more recent data! This could be converted into an R package (a later project).</p>
+<p>Great! It’s promising to see 46200 unique <code>datetime</code> values. We’ll need to do some data cleaning and adjust <code>count</code>, <code>macarthur_ave_display_cyclist_in</code>, <code>macarthur_ave_display_cyclist_out</code> to be numeric values. Nevertheless, we can see that the min and max values are presumably between 0 and at most 999. The observed range seems plausible, and the absence of missing values is reassuring.</p>
+<p>The great thing about the above data retrieval code is that hopefully it remains reproducible once ACT Government releases more recent data! This could be converted into an R package (a later project).</p>
 </section></section><section id="data-cleaning" class="level2"><h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
-<p>Let’s make those minor variable changes.</p>
+<p>Let’s make those minor variable changes. We can now manipulate the data by converting the datetime column to a proper date-time format and ensure numeric columns are actually numeric types.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clean_bike_data</span> <span class="op">&lt;-</span> <span class="va">raw_bike_data</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clean_bike_data</span> <span class="op">&lt;-</span> <span class="va">raw_bike_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
 <span>    date_time <span class="op">=</span> <span class="va">date_time</span> <span class="op">|&gt;</span> </span>
-<span>      <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">13</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>      <span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%Y-%m-%dT%H"</span><span class="op">)</span>,</span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span></span>
+<span>      <span class="fu">str_sub</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">13</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>      <span class="fu">as_datetime</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%Y-%m-%dT%H"</span><span class="op">)</span>,</span>
+<span>    <span class="fu">across</span><span class="op">(</span></span>
 <span>      <span class="op">!</span><span class="va">date_time</span>,</span>
 <span>      <span class="va">as.integer</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="co"># Avoid confusion with the count function</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>cyclist_count <span class="op">=</span> <span class="va">count</span><span class="op">)</span></span>
+<span>  <span class="fu">rename</span><span class="op">(</span>cyclist_count <span class="op">=</span> <span class="va">count</span><span class="op">)</span></span>
 <span><span class="va">clean_bike_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 46,200 × 4
@@ -489,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sanity-checks---clean-data" class="level3"><h3 class="anchored" data-anchor-id="sanity-checks---clean-data">Sanity Checks - Clean Data</h3>
 <p>Now, that the data is cleaned we can do some more sanity checks. The average number of cyclists passing through the Macarthur Avenue crossing is 43.5533766. However, there is quite a right-skewed distribution (mostly low counts by the hour). Interestingly, there’s a slightly more cyclists heading into the city than out of the city. Our dataset ranges between 2017-11-22 and 2017-11-22.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">clean_bike_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">skim</span><span class="op">(</span><span class="va">clean_bike_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
@@ -634,16 +617,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-</section></section><section id="time-series" class="level2"><h2 class="anchored" data-anchor-id="time-series">Time series</h2>
-<p>Let’s see how the number of bikes changes across time.</p>
+</section></section><section id="initial-visualisation-explorations" class="level2"><h2 class="anchored" data-anchor-id="initial-visualisation-explorations">Initial visualisation explorations</h2>
+<p>Let’s visualise the hourly cyclist counts over time to identify any discernible trends.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clean_bike_data</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clean_bike_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="va">date_time</span>,</span>
 <span>    y <span class="op">=</span> <span class="va">cyclist_count</span></span>
 <span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Wow, what an ugly plot! It seems like the hourly data has some significant fluctuations (likely nighttime lows). Let’s create a histogram to illustrate the right-skewed distribution of the <code>cyclist_count</code> variable and then aggregate to daily data and plot again.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clean_bike_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">cyclist_count</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span></span>
+<span>    bins <span class="op">=</span> <span class="fl">60</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
@@ -651,16 +651,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Wow, what an ugly plot! It seems like the hourly data (presumably at night) is resulting in all of these low values. Let’s create a histogram to highlight the right-skewed distribution of the <code>cyclist_count</code> variable and then aggregate to daily data and plot again.</p>
+<p>The plot below shows the daily cyclist count. Again it’s still quite confusing with a wide range of values.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clean_bike_data</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="va">cyclist_count</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily_cyclist_count</span> <span class="op">&lt;-</span> <span class="va">clean_bike_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    date <span class="op">=</span> <span class="fu">as_date</span><span class="op">(</span><span class="va">date_time</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">summarise</span><span class="op">(</span></span>
+<span>    <span class="fu">across</span><span class="op">(</span></span>
+<span>      <span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,</span>
+<span>      <span class="va">sum</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">date</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">cyclist_count</span></span>
 <span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span></span>
-<span>    bins <span class="op">=</span> <span class="fl">60</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Cyclist Count by Date"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Date"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Cyclist Count"</span>,</span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">daily_cyclist_count</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
@@ -668,32 +684,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>The plot below shows the daily cyclist count. Again it’s still quite confusing with a wide range of values.</p>
+</section><section id="canberrans-cycle-more-during-the-week" class="level2"><h2 class="anchored" data-anchor-id="canberrans-cycle-more-during-the-week">Canberrans cycle more during the week</h2>
+<p>Let’s take the same plot and add some colour indicating the day of the week. Now this paints a better picture, we’ve discovered that Canberrans are cycling less over the weekend. This also brings out the seasonality in the dataset (perhaps Summer and Spring). But we also can see the impacts of the COVID-19 lockdowns and potentially the aftermath of working from home policies.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily_cyclist_count</span> <span class="op">&lt;-</span> <span class="va">clean_bike_data</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    date <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date</a></span><span class="op">(</span><span class="va">date_time</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,</span>
-<span>      <span class="va">sum</span></span>
-<span>    <span class="op">)</span>,</span>
-<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="va">date</span>,</span>
-<span>    y <span class="op">=</span> <span class="va">cyclist_count</span></span>
-<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Cyclist Count by Date"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Date"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Cyclist Count"</span>,</span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">daily_cyclist_count</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily_cyclist_count_coloured</span> <span class="op">&lt;-</span> <span class="va">daily_cyclist_count</span> <span class="op">+</span></span>
+<span>  <span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="fu">wday</span><span class="op">(</span><span class="va">date</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_colour_viridis_d</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"Day of Week"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="va">daily_cyclist_count_coloured</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
@@ -701,15 +700,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section><section id="days-of-the-week" class="level2"><h2 class="anchored" data-anchor-id="days-of-the-week">Days of the week</h2>
-<p>Let’s take the same plot and add some colour indicating the day of the week. Now this paints a better picture, we’ve discovered that Canberrans are cycling less over the weekend. This also brings out the seasonality in the dataset (perhaps Summer and Spring). But we also can see the impacts of the COVID-19 lockdowns and potentially the aftermath of working from home policies.</p>
+</section><section id="morning-and-afternoon-commutes" class="level2"><h2 class="anchored" data-anchor-id="morning-and-afternoon-commutes">Morning and Afternoon Commutes</h2>
+<p>We’ve focused on the days of the week, let’s now visualise the time of day and also facet by day of the week.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">daily_cyclist_count_coloured</span> <span class="op">&lt;-</span> <span class="va">daily_cyclist_count</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/day.html">wday</a></span><span class="op">(</span><span class="va">date</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_colour_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"Day of Week"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span>
-<span><span class="va">daily_cyclist_count_coloured</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cyclist_count_by_hour</span> <span class="op">&lt;-</span> <span class="va">clean_bike_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    hour <span class="op">=</span> <span class="fu">hour</span><span class="op">(</span><span class="va">date_time</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">hour</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">summarise</span><span class="op">(</span></span>
+<span>    <span class="fu">across</span><span class="op">(</span></span>
+<span>      <span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,</span>
+<span>      <span class="va">mean</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">hour</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">cyclist_count</span></span>
+<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Average Cyclist Count by Hour"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Hour of the Day (24 hour time)"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Cyclist Count"</span>,</span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">cyclist_count_by_hour</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
@@ -717,34 +735,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section><section id="time-of-day" class="level2"><h2 class="anchored" data-anchor-id="time-of-day">Time of day</h2>
-<p>We’ve focused on the days of the week, let’s now visualise the time of day and also facet by day of the week.</p>
+<p>Morning and afternoon work commutes! It also seems there’s an increase around 3pm, maybe the finishing of school!</p>
+<p>Let’s facet by day of the week to compare the hours by their respective days.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cyclist_count_by_hour</span> <span class="op">&lt;-</span> <span class="va">clean_bike_data</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    hour <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/hour.html">hour</a></span><span class="op">(</span><span class="va">date_time</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">hour</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,</span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clean_bike_data_hourly_by_day_of_the_week</span> <span class="op">&lt;-</span> <span class="va">clean_bike_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>    hour <span class="op">=</span> <span class="fu">hour</span><span class="op">(</span><span class="va">date_time</span><span class="op">)</span>,</span>
+<span>    day_of_week <span class="op">=</span> <span class="va">date_time</span> <span class="op">|&gt;</span> </span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/date.html">date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>      <span class="fu">wday</span><span class="op">(</span>week_start <span class="op">=</span> <span class="fl">1</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">hour</span>, <span class="va">day_of_week</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarise</span><span class="op">(</span></span>
+<span>    <span class="fu">across</span><span class="op">(</span></span>
+<span>      <span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,</span>
 <span>      <span class="va">mean</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">cyclist_count_by_hour_with_facet</span> <span class="op">&lt;-</span> <span class="va">clean_bike_data_hourly_by_day_of_the_week</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="va">hour</span>,</span>
 <span>    y <span class="op">=</span> <span class="va">cyclist_count</span></span>
 <span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Average Cyclist Count by Hour"</span>,</span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Average Cyclist Count by Hour, Faceted by Day of Week"</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">"Hour of the Day (24 hour time)"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Cyclist Count"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Cyclist Count"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">cyclist_count_by_hour</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">day_of_week</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cyclist_count_by_hour_with_facet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
@@ -752,48 +777,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Let’s facet by day of the week.</p>
-<div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">clean_bike_data_hourly_by_day_of_the_week</span> <span class="op">&lt;-</span> <span class="va">clean_bike_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    hour <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/hour.html">hour</a></span><span class="op">(</span><span class="va">date_time</span><span class="op">)</span>,</span>
-<span>    day_of_week <span class="op">=</span> <span class="va">date_time</span> <span class="op">|&gt;</span> </span>
-<span>      <span class="fu"><a href="https://lubridate.tidyverse.org/reference/date.html">date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>      <span class="fu"><a href="https://lubridate.tidyverse.org/reference/day.html">wday</a></span><span class="op">(</span>week_start <span class="op">=</span> <span class="fl">1</span>, label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">hour</span>, <span class="va">day_of_week</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span></span>
-<span>      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>,</span>
-<span>      <span class="va">mean</span></span>
-<span>    <span class="op">)</span>,</span>
-<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="va">cyclist_count_by_hour_with_facet</span> <span class="op">&lt;-</span> <span class="va">clean_bike_data_hourly_by_day_of_the_week</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="va">hour</span>,</span>
-<span>    y <span class="op">=</span> <span class="va">cyclist_count</span></span>
-<span>  <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Average Cyclist Count by Hour, Faceted by Day of Week"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Hour of the Day (24 hour time)"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Cyclist Count"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">day_of_week</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">cyclist_count_by_hour_with_facet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>Very interesting, as expected from the previous plots, weekends have less cyclists. We can see the morning work commutes during the week; however, there seems to be less commuters on Mondays and Fridays.</p>
+</section><section id="next-steps" class="level2"><h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<p>Moving forward, it would be interesting to expand the analysis and incorporate weather information and maybe major events like Spilt Milk or Groovin. I also want to look into the effect of Public Holidays and perhaps see if there’s any late night cyclists coming home from Thursday, Friday, Saturday nights out from Civic.</p>
+<p>Another prospective idea would be looking into air quality data.</p>
+<p>Could even look into doing some time series forecasting with the <code>tidymodels</code> or <code>fable</code> R packages.</p>
+<p>Happy Cycling! 🚴</p>
 </section><section id="resources-used" class="level2"><h2 class="anchored" data-anchor-id="resources-used">Resources used:</h2>
 <ul>
 <li><a href="https://www.data.act.gov.au/Transport/ACT-Bike-Barometer-MacArthur-Avenue/62sb-92ea/about_data">ACT Bike Barometer - MacArthur Avenue</a></li>
