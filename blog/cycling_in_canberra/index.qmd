@@ -1,0 +1,98 @@
+---
+title: "Cycling in Canberra"
+description: ""
+author: "Johann Wagner"
+date: "2025-03-18"
+categories:
+  - "Exploratory Data Analysis"
+  - "Cycling"
+---
+
+## Context
+### Personal Interest
+
+### Data Context
+This dataset contains the number of trips counted by the bike barometer located on the Sullivan's Creek shared path at the intersection with MacArthur Avenue in O'Connor.
+
+The data is recorded in hourly intervals, and is collected using an induction loop similar to systems used for traffic light monitoring. Trips in both directions are included in the recorded counts.
+
+## Setup and Configuration
+
+```{r}
+library(tidyverse)
+library(httr2)
+library(skimr)
+```
+
+## Data Loading
+We'll access the Canberra Bike Barometer data via an API.
+
+```{r}
+base_url <- "https://www.data.act.gov.au/resource/62sb-92ea.json"
+req <- request(base_url)
+
+resp <- req |> 
+  req_perform()
+
+res <- resp |> 
+  resp_body_json()
+```
+
+Unfortunately, the API service has a default limit of providing 1000 rows, so we will have to do some smart looping to ensure we get the complete dataset. We will set our limit parameter to 1000 and create a new function to make a GET API request.
+```{r}
+limit <- 1000
+
+get_data <- function(offset) {
+  url <- paste0(base_url, "?$offset=", offset, "&$limit=", limit)
+  request(url) |> 
+    req_perform() |> 
+    resp_body_json()
+}
+```
+
+Now, we can create a `while` loop to fetch the data in chunks. We can increment the `offset` parameter in each iteration and store the fetched data in `raw_bike_data`.The `tryCatch` function is used to handle potential errors during the request. So long the http response code is 200, the loop will not break. If the response is empty `length(result) == 0`, it means there's no more data and the loop will break.
+
+```{r}
+bike_data <- list()
+offset <- 0
+
+while (TRUE) {
+  print(paste("Offset:", offset))
+  result <- tryCatch({
+    get_data(offset)
+  }, error = function(e) {
+    print(paste("Error fetching data:", e$message))
+    return(NULL)
+  })
+  
+  if (is.null(result) || length(result) == 0) {
+    break
+  }
+  
+  bike_data <- c(bike_data, result)
+  offset <- offset + limit
+  
+  # Mindful of rate limits to avoid being blocked by the API
+  Sys.sleep(1)
+}
+
+raw_bike_data <- bike_data |> 
+  map_dfr(as_tibble)
+```
+
+Hurray! Let's do some sanity checks / data quality checks.
+```{r}
+skim(raw_bike_data)
+```
+
+Great! It's very reassuring to see 46200 unique `datetime` values. We'll need to do some data cleaning and adjust `count`, `macarthur_ave_display_cyclist_in`, `macarthur_ave_display_cyclist_out` to be numeric values, but we can see that the min and max values are presumably between 0 and at most 999, which seems reasonable for hourly bike counts. We've also got no missing/empty values.
+
+The great thing about the above code is that hopefully it remains reproducible once ACT Government releases more recent data! This could be converted into an R package (a later project).
+
+## Time series
+
+## Days of the week
+
+## Time of day
+
+## GitHub calendar
