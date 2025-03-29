@@ -1,45 +1,38 @@
 ---
-title: "Cycling in Canberra"
-description: ""
+title: "Cycling in Canberra 🚴"
+description: "Initial exploration into Canberra's cycling habits"
 author: "Johann Wagner"
 date: "2025-03-18"
 categories:
   - "Exploratory Data Analysis"
   - "Cycling"
+  - "Canberra"
 ---
 
 ## Context
 ### Personal Interest
+As an avid cyclist commuting to work to work as a data analyst, combining the two seems natural. This analysis is a personal exploration into the Canberra's cycling habits, hopefully uncovering some patterns along the way.
 
 ### Data Context
-This dataset contains the number of trips counted by the bike barometer located on the Sullivan's Creek shared path at the intersection with MacArthur Avenue in O'Connor.
+This dataset contains the number of trips counted by the bike barometer located on the Sullivan's Creek shared path at the intersection with MacArthur Avenue in O'Connor. Colloquially known as *Dickson Bike Path*, it is commonly used by commuters into Civic, university students heading to Campus in Acton, school students, and avid cyclists.
 
 The data is recorded in hourly intervals, and is collected using an induction loop similar to systems used for traffic light monitoring. Trips in both directions are included in the recorded counts.
 
 ## Setup and Configuration
 
+Let's begin by loading the neccessary R libraries.
 ```{r}
+#| include: false
 library(tidyverse)
 library(httr2)
 library(skimr)
 ```
 
 ## Data Loading (with API)
-We'll access the Canberra Bike Barometer data via an API.
+Accessing the Canberra Bike Barometer data requires interacting with an API. However, the API's default limit of 1000 rows necessitates a more strategic approach.
 
 ```{r}
 base_url <- "https://www.data.act.gov.au/resource/62sb-92ea.json"
-req <- request(base_url)
-
-resp <- req |> 
-  req_perform()
-
-res <- resp |> 
-  resp_body_json()
-```
-
-Unfortunately, the API service has a default limit of providing 1000 rows, so we will have to do some smart looping to ensure we get the complete dataset. We will set our limit parameter to 1000 and create a new function to make a GET API request.
-```{r}
 limit <- 1000
 
 get_data <- function(offset) {
@@ -50,7 +43,9 @@ get_data <- function(offset) {
 }
 ```
 
-Now, we can create a `while` loop to fetch the data in chunks. We can increment the `offset` parameter in each iteration and store the fetched data in `raw_bike_data`.The `tryCatch` function is used to handle potential errors during the request. So long the http response code is 200, the loop will not break. If the response is empty `length(result) == 0`, it means there's no more data and the loop will break.
+To overcome this limitation, we can use a `while` loop that fetches data in chunks of 1000 rows. The `tryCatch` function handles potential API errors, ensuring a robust data retrieval process. So long the http response code is 200[^1], the loop will not break. If the response is empty `length(result) == 0`, it means there's no more data and the loop will break.
+
+[^1]: When you see a 200 response, it signals that the data was retrieved without errors. The server has successfully processed our requests.
 
 ```{r}
 bike_data <- list()
@@ -81,17 +76,17 @@ raw_bike_data <- bike_data |>
 ```
 
 ### Sanity Checks - Raw Data
-Hurray! Let's do some sanity checks / data quality checks.
+Hurray! Let's do some sanity checks to assess the data quality.
 ```{r}
 skim(raw_bike_data)
 ```
 
-Great! It's very reassuring to see 46200 unique `datetime` values. We'll need to do some data cleaning and adjust `count`, `macarthur_ave_display_cyclist_in`, `macarthur_ave_display_cyclist_out` to be numeric values. Nevertheless, we can see that the min and max values are presumably between 0 and at most 999, which seems reasonable for hourly bike counts. We've also got no missing/empty values.
+Great! It's promising to see 46200 unique `datetime` values. We'll need to do some data cleaning and adjust `count`, `macarthur_ave_display_cyclist_in`, `macarthur_ave_display_cyclist_out` to be numeric values. Nevertheless, we can see that the min and max values are presumably between 0 and at most 999. The observed range seems plausible, and the absence of missing values is reassuring.
 
-The great thing about the above code is that hopefully it remains reproducible once ACT Government releases more recent data! This could be converted into an R package (a later project).
+The great thing about the above data retrieval code is that hopefully it remains reproducible once ACT Government releases more recent data! This could be converted into an R package (a later project).
 
 ## Data Cleaning
-Let's make those minor variable changes.
+Let's make those minor variable changes. We can now manipulate the data by converting the datetime column to a proper date-time format and ensure numeric columns are actually numeric types.
 ```{r}
 clean_bike_data <- raw_bike_data |> 
   mutate(
@@ -115,8 +110,8 @@ Now, that the data is cleaned we can do some more sanity checks. The average num
 skim(clean_bike_data)
 ```
 
-## Time series
-Let's see how the number of bikes changes across time.
+## Initial visualisation explorations
+Let's visualise the hourly cyclist counts over time to identify any discernible trends.
 ```{r}
 clean_bike_data |> 
   ggplot(aes(
@@ -127,7 +122,7 @@ clean_bike_data |>
   theme_minimal()
 ```
 
-Wow, what an ugly plot! It seems like the hourly data (presumably at night) is resulting in all of these low values. Let's create a histogram to highlight the right-skewed distribution of the `cyclist_count` variable and then aggregate to daily data and plot again.
+Wow, what an ugly plot! It seems like the hourly data has some significant fluctuations (likely nighttime lows). Let's create a histogram to illustrate the right-skewed distribution of the `cyclist_count` variable and then aggregate to daily data and plot again.
 
 ```{r}
 clean_bike_data |> 
@@ -167,7 +162,7 @@ daily_cyclist_count <- clean_bike_data |>
 daily_cyclist_count
 ```
 
-## Days of the week
+## Canberrans cycle more during the week
 Let's take the same plot and add some colour indicating the day of the week. Now this paints a better picture, we've discovered that Canberrans are cycling less over the weekend. This also brings out the seasonality in the dataset (perhaps Summer and Spring). But we also can see the impacts of the COVID-19 lockdowns and potentially the aftermath of working from home policies.
 
 ```{r}
@@ -179,7 +174,7 @@ daily_cyclist_count_coloured <- daily_cyclist_count +
 daily_cyclist_count_coloured
 ```
 
-## Time of day
+## Morning and Afternoon Commutes
 We've focused on the days of the week, let's now visualise the time of day and also facet by day of the week.
 ```{r}
 cyclist_count_by_hour <- clean_bike_data |> 
@@ -209,7 +204,9 @@ cyclist_count_by_hour <- clean_bike_data |>
 cyclist_count_by_hour
 ```
 
-Let's facet by day of the week.
+Morning and afternoon work commutes! It also seems there's an increase around 3pm, maybe the finishing of school!
+
+Let's facet by day of the week to compare the hours by their respective days.
 ```{r}
 clean_bike_data_hourly_by_day_of_the_week <- clean_bike_data |>
   mutate(
@@ -246,6 +243,15 @@ cyclist_count_by_hour_with_facet
 ```
 
 Very interesting, as expected from the previous plots, weekends have less cyclists. We can see the morning work commutes during the week; however, there seems to be less commuters on Mondays and Fridays.
+
+## Next Steps
+Moving forward, it would be interesting to expand the analysis and incorporate weather information and maybe major events like Spilt Milk or Groovin. I also want to look into the effect of Public Holidays and perhaps see if there's any late night cyclists coming home from Thursday, Friday, Saturday nights out from Civic.
+
+Another prospective idea would be looking into air quality data.
+
+Could even look into doing some time series forecasting with the `tidymodels` or `fable` R packages.
+
+Happy Cycling! 🚴
 
 ## Resources used:
 
