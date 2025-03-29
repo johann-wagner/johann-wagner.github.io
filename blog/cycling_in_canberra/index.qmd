@@ -24,7 +24,7 @@ library(httr2)
 library(skimr)
 ```
 
-## Data Loading
+## Data Loading (with API)
 We'll access the Canberra Bike Barometer data via an API.
 
 ```{r}
@@ -80,14 +80,37 @@ raw_bike_data <- bike_data |>
   map_dfr(as_tibble)
 ```
 
+### Sanity Checks - Raw Data
 Hurray! Let's do some sanity checks / data quality checks.
 ```{r}
 skim(raw_bike_data)
 ```
 
-Great! It's very reassuring to see 46200 unique `datetime` values. We'll need to do some data cleaning and adjust `count`, `macarthur_ave_display_cyclist_in`, `macarthur_ave_display_cyclist_out` to be numeric values, but we can see that the min and max values are presumably between 0 and at most 999, which seems reasonable for hourly bike counts. We've also got no missing/empty values.
+Great! It's very reassuring to see 46200 unique `datetime` values. We'll need to do some data cleaning and adjust `count`, `macarthur_ave_display_cyclist_in`, `macarthur_ave_display_cyclist_out` to be numeric values. Nevertheless, we can see that the min and max values are presumably between 0 and at most 999, which seems reasonable for hourly bike counts. We've also got no missing/empty values.
 
 The great thing about the above code is that hopefully it remains reproducible once ACT Government releases more recent data! This could be converted into an R package (a later project).
+
+## Data Cleaning
+Let's make those minor variable changes.
+```{r}
+clean_bike_data <- raw_bike_data |> 
+  mutate(
+    date_time = date_time |> 
+      str_sub(1, 13) |> 
+      as_datetime(format = "%Y-%m-%dT%H"),
+    across(
+      !date_time,
+      as.integer
+    )
+  )
+clean_bike_data
+```
+
+### Sanity Checks - Clean Data
+Now, that the data is cleaned we can do some more sanity checks.
+```{r}
+skim(clean_bike_data)
+```
 
 ## Time series
 
