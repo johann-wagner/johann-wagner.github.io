@@ -102,7 +102,7 @@
     "href": "blog/cycling_in_canberra/index.html#setup-and-configuration",
     "title": "Cycling in Canberra 🚴",
     "section": "Setup and Configuration",
-    "text": "Setup and Configuration\nLet’s begin by loading the neccessary R libraries."
+    "text": "Setup and Configuration\nLet’s begin by loading the neccessary R libraries.\n\nlibrary(tidyverse)\nlibrary(httr2)\nlibrary(skimr)"
   },
   {
     "objectID": "blog/cycling_in_canberra/index.html#data-loading-with-api",

@@ -25,7 +25,7 @@ The data is recorded in hourly intervals, and is collected using an induction lo
 
 Let's begin by loading the neccessary R libraries.
 ```{r}
-#| include: false
+#| output: false
 library(tidyverse)
 library(httr2)
 library(skimr)
