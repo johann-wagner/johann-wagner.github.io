@@ -1,0 +1,98 @@
+---
+title: "SSA Mentoring with Emi (April 2025)"
+description: "Setting up the goal posts, "
+author: "Johann Wagner"
+date: "2025-04-02"
+format: html
+categories:
+  - "Mentoring"
+---
+
+## Our 2nd SSA Mentoring session at CBE Buidling 26C
+The [ANU CBE Building 26C](https://www.google.com/maps/place/ANU+College+of+Business+%26+Economics/data=!4m2!3m1!1s0x0:0xa29eb8b6024d528d?sa=X&ved=1t:2428&ictx=111) is one of my more iconic memories of my time at university as a student.[^1] It's a great study place if you can find any free/empty tables. This building is also home to a small coffee shopfront in the main foyer with plentiful tables to choose from. This is where Emi and I decided to meet for our 2nd [SSA mentoring](https://www.statsoc.org.au/Mentoring) session.
+
+[^1]: One of my first tutorials was in this building and I remember frantically trying to arrive sharp and early with a textbook in hand and laptop in the other.
+
+```{=html}
+<iframe src="https://www.google.com/maps/embed?pb=!4v1743592024530!6m8!1m7!1sCAoSLEFGMVFpcE5YUU9qRFluamxpME1GcncxN0lxSzE1UGJHaXdDTWc2dkFDTFNK!2m2!1d-35.2768033!2d149.1234433!3f39.668353996275506!4f3.1395266379755356!5f0.7820865974627469" width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+```
+
+## Purpose: Blog writing helps achieve one of my goals
+I'm using this blog to document my mentoring sessions, primarily to improve my writing. But it's also about preserving those 'aha!' moments, those conversations that are too good to forget, [^2]. Writing them down is a perfect way to do that, and a great opportunity to get better at using Quarto.
+
+[^2]: Now that I'm writing this, I think I'm realising I've already forgotten much of our conversations (even though it's only been a bit over a day since meeting). Perhaps I should record the sessions... a podcast 😀
+
+## Wow, git can be so confusing sometimes
+
+One of the things I've really enjoyed chatting with Emi is our ability to *'chat nerd'*. I define *Nerd Chats* as conversations, where I get to talk passionately about a technical aspect that only so few would enjoy. I've found a special kind of connection with Emi through our *'nerd chats'*. It's that rare space where I can passionately unravel the intricacies of a technical challenge, knowing she gets it. It's the particular developer problems that only other developers (*nerds*) will be able to relate to and understand the frustration (or enjoyment depending on the chat).
+
+Our *'nerd chat'* centered on a shared version control headache, specifically the dreaded "oh wait, I didn't actually want to commit that!". The solution: 'Ctrl + Z', the undo button, the digital form of an 'UNO reverse card'. Fortunately, there's a few git commands that offer exactly this.[^3] Unfortunately, these features were not working how we wanted them to.
+
+Familiar cycles through Google, Stackoverflow posts, and chatGPTing, a developer gets to a point of frustration, where best practices slowly start to fade. Instead of using these more appropriate, much better practice approaches, I confess and succumb to the lure of familiarity skipping the 'correct' approach. I push my ego and perfectionism aside and end up deleting my entire project folder and simply clone the remote repo again. Problem solved, because the problem never existed, a clean slate! Drastic solutions for seamingly simple problems. 😀
+
+We exchange knowing nods mixed with ammusement and 'smh'ing; a couple of laughs, smiles, and moving on with our conversation.
+
+[^3]: If you've got this problem too, I'd recommend looking at `git revert`, `git commit --amend`, `git reset`. Here's a [stackoverflow](https://stackoverflow.com/questions/19032296/how-to-use-git-revert) that might help.
+
+## Setting up the goal posts
+
+The rest of my session with Emi flew by as I broadly described the goals I'm setting for our mentoring. We talked about everything – from coding challenges to big-picture career/travel/life aspirations. It was amazing to have someone really actively listen and help me clarify what I want to achieve. 
+
+### 1. Development of an R Package(s)
+
+A primary goal is the creation of an R package(s). I want it to be relatively simple, but extremely well documented (both the package documentation, as well as the process of creating the package itself). What I'm aiming for isn't some sprawling, all-encompassing tool, but something simple, focused, and extremely well-documented.
+
+Big emphasis on following Hadley and Jennifer's best practices using their book: [R Packages (2e)](https://r-pkgs.org/). Most R packages I see are these massive, powerful things, and that's amazing! But I want to show that even a small package can have high clarity and usability. I want it to be a learning tool for myself, and hopefully for others who are just getting started with package development.
+
+
+Thankfully, I'm planning to blend this with my open-source goals. I want to document everything – the thought process, the challenges, the "aha!" moments. And this bleeds nicely into my 2nd mentoring goal.
+
+### 2. Contribution to Open Source Public Sector Data and Software
+
+There are some incredible packages out there, like [`galah`](https://galah.ala.org.au/R/), [`readabs`](https://mattcowgill.github.io/readabs/), and [`absmapsdata`](https://github.com/wfmackey/absmapsdata), that are doing really meaningful work. I'd love to contribute to these projects and learn from the amazing developers behind them. Also, interested in learning more about OPEN and FAIR data practices.
+
+And then there's the runapp community. It's full of so many talented and experienced users, and I'm eager to learn from their expertise. I want to participate more actively in their discussions, contribute to their projects, and build connections with these people.
+
+I think by blending my package development with open-source contributions and active participation in communities like runapp, I can really make a difference, but hopefully encourage others to engage with this goal. Plus, it's a fantastic opportunity to learn from the best!
+
+From my experience in the public service, I've seen how easy it is to fall into the "this is how we've always done it" trap, or to shy away from new ideas due to perceived risks or scope limitations. I want to challenge that, and show that we can embrace modern data practices and use these open source tools more effectively.
+
+### 3. Sharing the journey with others (+ future Johann)
+
+I've already touched on this 3rd goal in the introduction. If you've made it this far, you know I'm a big believer in documenting and archiving ideas and conversations. I want these blog posts to be more than just updates; I want them to be a record of my learning process[^4], a place where I can reflect on what I'm discovering and share it with others. 
+
+Ideally, these posts will help me practice my writing skills (even if it is informal writing). I want to get better at articulating my thoughts and experiences, especially when it comes to technical stuff.[^5] 
+
+More importantly, I want to use this platform to inform and encourage others (especially future Johann reading this to keep being inspired and working on these home projects), particularly those in the public sector, to get involved with open source and data best practices. So many people in the public service use R and rely on these incredible packages, but they might not realise the effort behind them or the communities that build them. I want to shine a light on that, to show that anyone can contribute and learn.
+
+[^4]: Teaching someone else is one of the best ways I learn!
+[^5]: Communication is really the most important step in the data food chain.
+
+### 4. Exploration of Decision-making Parallels
+
+This goal will be nice to balance all of the possible technical data chat that Emi will have to endure. The main challenges surrounding this goal is a broader challenge of being in your 20s. Some people in my cohort of 20-30 year olds are doing all sorts of fun things:
+
+* Some are living it up in Sydney or Melbourne in their early professional careers.
+* Some are taking the risk and moving to the other side of Australia to Perth or Darwin.
+* Others are packing up shop and moving overseas.
+* A few others have fully packed up a backpack and travelling the world.
+* I don't know many, but some are buying homes and starting families.
+* And I'm certain the majority have no idea what they're doing themselves.
+
+The choice paralysis challenge combines all sorts of avenues of life, like friends, families, relationships, career pathways, travel experiences, accessibility to services, structure & routine, adventure & excitement. It will be super valuable chatting to Emi and her perspectives. Her advice so far: "Talk to many different people and get a broad range of views".
+
+### 5. Moving from mentee to mentor to teacher to coach
+I've always been drawn to mentoring and teaching. It's a space where I feel truly inspired and alive[^6], where my professional and personal passions intersect. It's a major driver for me, a real spark that makes work feel meaningful.
+
+So, naturally, one of my goals is to explore this further, and I'm particularly excited to discuss it with Emi, given her extensive teaching experience, especially in the university and research environment. Emi will have plenty of knowledge on balancing out the tedious task of teaching such as administration and middle/upper management as well as teaching coaching; the fun stuff, witnessing someone have the 'aha!' moment.
+
+I want to explore questions like:
+
+* "How do you cultivate that supportive environment where people feel empowered to learn and grow?"
+* "How have you used R as a teaching tool?"
+* "How can I best use my passion for teaching in my role as a data professional?"
+
+[^6]: Like truly alive, that feeling when you're really just focusing and zoned in on the moment.
+
+## The end, thanks for reading! 😄
+I left feeling energised and like I have a real plan. Thanks Emi!
