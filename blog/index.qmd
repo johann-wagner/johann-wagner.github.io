@@ -10,10 +10,6 @@ listing:
 title-block-banner: true
 ---
 
-I write about a bunch of different things:
-
-- one-off data analysis
-- useful R tips and tricks
-- personal blog posts
+I write about a bunch of different things...
 
 I hope you find something useful here! 😊
